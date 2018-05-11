@@ -1,0 +1,24 @@
+- content_for :main_grid do
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @item }
+  div.examing
+    = button_to "検閲をやめる", "/admin/questions/stop_examine/#{@item.id}", class: "typus__button__cancel"
+    = form_tag "/admin/questions/accept"
+      = hidden_field_tag :id, @item.id
+      = submit_tag "検閲済みにする", data: {confirm: "検閲済みにしてよろしいでしょうか？" }, class: "typus__button__ok"
+    = link_to "前の画面へ戻る", "/admin/questions/index"
+    div.typus_refuse
+      h3 質問の差し戻し
+      = form_tag "/admin/questions/refuse"
+        = hidden_field_tag :id, @item.id
+        = select_tag :refuse_reason_select, options_for_select(Settings.question_refuse_reason), placeholder: "差し戻しの理由を選択してください", class: "typus__refuse_reason_select"
+        = text_area :refuse_reason_text, nil, placeholder: "自由記述欄", class: "typus__refuse_reason_text"
+        = submit_tag "差し戻す", data: {confirm: "差し戻してもよろしいでしょうか？"}, class: "typus__button__cancel"
+    = link_to "前の画面へ戻る", "/admin/questions/index"
+    div.typus_refuse
+      h3 対応保留
+      = form_tag "/admin/questions/pending"
+        = hidden_field_tag :id, @item.id
+        = text_area :pending_reason_text, nil, placeholder: "対応保留の理由を140字以内で記述してください", class: "typus__refuse_reason_text"
+        = submit_tag "保留する", data: {confirm: "保留にしてもよろしいでしょうか？"}, class: "typus__button__cancel"
+.typus__main__content__show
+  = yield :main_grid

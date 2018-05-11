@@ -1,0 +1,39 @@
+.panel.panel-default
+  .panel-heading
+    h4.account_title トライ 添削指導サービス 指導者登録
+  .panel-ad
+    p
+      = image_tag 'pc/for_answerers_20150617_upper.png', width: 800
+    p
+      = image_tag 'pc/for_answerers_20150617_lower.png', width: 800
+  .panel-ad_sp
+    p
+      a target="_blank" href="https://s3.amazonaws.com/www.try-it.jp/for_answerers_20150617.pdf" 添削指導サービスの詳細はこちら
+  .panel-body
+    = form_for @admin_user, builder: WithErrorFormBuilder, url: confirm_admin_teacher_accounts_path do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: "form-control", placeholder: 'メールアドレスを入力してください'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: "form-control", placeholder: '8桁以上を入力してください'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: "form-control"
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: "form-control"
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: "form-control"
+      .form-group
+        = f.label :last_name_kana
+        = f.text_field :last_name_kana, class: "form-control"
+      .form-group
+        = f.label :first_name_kana
+        = f.text_field :first_name_kana, class: "form-control"
+      .form-group
+        = f.label :tel
+        = f.text_field :tel, class: "form-control", placeholder: 'ハイフンなし、数字のみ10〜11桁を入力してください'
+      .form-btn-container
+        = f.submit t('.send_confirmation', :default => "入力内容を確認"), class: "btn btn-primary btn-login"

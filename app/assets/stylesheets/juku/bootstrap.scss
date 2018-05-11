@@ -1,0 +1,26 @@
+@import "0_normalize.scss";
+@import "1_var.scss";
+@import "2_mixin.scss";
+@import "3_common.scss";
+@import "4_form.scss";
+@import "5_app.scss";
+@import "element/*";
+@import "6_header.scss";
+@import "7_footer.scss";
+@import "8_roomselect.scss";
+@import "9_breadcrumbs.scss";
+@import "10_systemmenu.scss";
+@import "11_schedule.scss";
+@import "12_curriculum_edit.scss";
+@import "13_curriculum.scss";
+@import "14_history.scss";
+@import "15_report.scss";
+@import "16_modal.scss";
+@import "17_calendar.scss";
+@import "18_students.scss";
+@import "19_simulator.scss";
+@import "20_loading.scss";
+@import "21_errormessage.scss";
+@media print {
+  @import "print.scss";
+}

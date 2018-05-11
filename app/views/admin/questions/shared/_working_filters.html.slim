@@ -1,0 +1,18 @@
+ul.predefined_filters
+  / 検閲者のタブ一覧
+  - if @admin_user.role == "gatekeeper"
+    li#examining.typus__left_list
+      = link_to "検閲中の質問", { :action => :examining }, { id: :examining }
+  / 承認者のタブ一覧
+  - elsif @admin_user.role == "executive_answerer" || @admin_user.role == "admin"
+    li#examining.typus__left_list
+      = link_to "検閲中の質問", { :action => :examining }, { id: :examining }
+    li#assigned.typus__left_list
+      = link_to "回答中の質問", { :action => :assigned }, { id: :assigned }
+    li#checking.typus__left_list
+      = link_to "承認作業中の質問", { :action => :checking }, { id: :checking }
+
+  / 回答者のタブ一覧
+  - elsif @admin_user.role == "answerer"
+    li#typus__left_list.assigned
+      = link_to "回答中の質問", { :action => :assigned }, { id: :assigned }

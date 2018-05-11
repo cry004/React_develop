@@ -1,0 +1,40 @@
+.RoomSelect {
+  width: 330px;
+  height: 330px;
+  margin: 200px auto 0;
+  select {
+    width: 100%; 
+    margin-bottom: 20px;
+  }
+  .error {
+    color: #F00; 
+    display: none;
+    &.active {
+      display: block;
+    } 
+  }
+  .roomSelectBox {
+    position: relative;
+    &:before {
+      opacity: 1;
+      content: "";
+      position: absolute;
+      left: -30px;
+      top: 15px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-image: image-url('juku/loading-25.gif');
+      background-size: 100%;
+      -webkit-transition: all 0.15s;
+      -moz-transition: all 0.15s;
+      -ms-transition: all 0.15s;
+      transition: all 0.15s;
+    }
+    &.is-fetched {
+      &:before {
+        opacity: 0;
+      }    
+    }
+  }
+}

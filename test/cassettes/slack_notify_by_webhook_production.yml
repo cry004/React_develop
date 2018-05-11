@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://hooks.slack.com/services/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
+    body:
+      encoding: US-ASCII
+      string: payload=%7B%22attachments%22%3A%5B%7B%22color%22%3A%22danger%22%2C%22title%22%3A%22%5Btest%5D+FATAL+ERROR%22%2C%22text%22%3A%22%E3%83%86%E3%82%B9%E3%83%88%22%7D%5D%2C%22channel%22%3A%22n-production%22%2C%22username%22%3A%22notification%22%2C%22icon_emoji%22%3A%22%3Atrysan%3A%22%7D
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '22'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - referrer no-referrer;
+      Date:
+      - Mon, 06 Feb 2017 05:34:32 GMT
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Slack-Backend:
+      - h
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 f7eae49a9ea3d75d12cd35ff13866759.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - HX2O5GyqvLuicsliGpDEVYfcTUA_EOv5qr9lXUixN3z5UoVPF_dgVQ==
+    body:
+      encoding: ASCII-8BIT
+      string: ok
+    http_version: 
+  recorded_at: Mon, 06 Feb 2017 05:34:32 GMT
+recorded_with: VCR 3.0.1

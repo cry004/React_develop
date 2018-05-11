@@ -1,0 +1,159 @@
+.bl-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .el-button {
+    margin-top: 40px;
+    display: inline-block;
+    & + .el-button {
+      margin-left: 20px;
+    }
+  }
+  &-inner {
+    width: 600px;
+    padding: 60px 20px 20px;
+    background-color: $color-white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+    font-size: $font-size-60;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    line-height: 1.3;
+    @each $type in $popup-type {
+      .#{$type} {
+        display: none;
+      }
+    }
+    &.is-trophy {
+      padding: 0;
+    }
+    .level {
+      &-heading {
+        font-size: $font-size-60;
+      }
+      &-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px auto 0;
+        width: 289px;
+        height: 110px;
+        background-size: cover;
+        background-image: image-url('students/common/bg-levelup.png');
+      }
+      &-text {
+        margin-top: 70px;
+        font-size: $font-size-20;
+        &-level {
+          font-size: $font-size-60;
+        }
+        &-number {
+          font-size: $font-size-80;
+        }
+      }
+    }
+    .trophy {
+      padding: 60px 20px 20px;
+      &.is-course {
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 121px;
+          height: 121px;
+          background-size: cover;
+          background-image: image-url('students/common/ribbon-top.png');
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 121px;
+          height: 121px;
+          background-size: cover;
+          background-image: image-url('students/common/ribbon-bottom.png');
+        }
+      }
+      &-heading {
+        font-size: $font-size-60;
+      }
+      &-image {
+        margin: 30px auto 0;
+        width: 289px;
+        height: 113px;
+        background-size: cover;
+        background-image: image-url('students/common/trophy-main.png');
+      }
+      &-text {
+        margin-top: 40px;
+        font-size: $font-size-20;
+        &-title {
+          margin: 5px 15px 8px;
+          display: block;
+          font-size: $font-size-40;
+          font-weight: normal;
+        }
+      }
+      &-number {
+        margin-top: 15px;
+        position: relative;
+        font-size: $font-size-20;
+        display: block;
+        font-weight: normal;
+        color: $color-text-gray;
+        &:before {
+          content: "";
+          margin-right: 5px;
+          display: inline-block;
+          vertical-align: baseline;
+          width: 20px;
+          height: 20px;
+          background-image: image-url('students/common/icon/trophy-gray.png');
+          background-size: cover;
+        }
+        span {
+          font-size: $font-size-60;
+          font-weight: bold;
+          margin-right: 5px;
+        }
+      }
+      &-experience {
+        margin-top: 15px;
+        font-size: $font-size-70;
+        span {
+          font-size: $font-size-30;
+          vertical-align: middle;
+        }
+      }
+    }
+    .vacation,
+    .not-accept-question {
+      &-title {
+        margin-bottom: 30px;
+      }
+      &-description {
+        font-size: $font-size-50;
+        font-weight: normal;
+        width: 490px;
+        margin: 0 auto;
+      }
+    }
+    @each $type in $popup-type {
+      &.is-#{$type} {
+        .#{$type} {
+          display: block;
+        }
+      }
+    }
+  }
+}

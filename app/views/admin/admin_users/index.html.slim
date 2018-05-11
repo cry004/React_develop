@@ -1,0 +1,31 @@
+- page_title = @resource.model_name.human.pluralize
+- admin_title(page_title)
+- @resource_actions = [["Show", {:action=>"show"}]]
+- custom_fileds = fields.merge({ tel: :string, rank: :string, accepted_posts_at_prev_month_count: :integer })
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  .csv_download
+    = link_to 'CSVダウンロード', { controller: "admin/admin_users", action: :csv_download, format: :csv }
+  br
+  br
+  - if admin_search
+    .filters
+      = admin_search
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions { build_list(@resource, custom_fileds, @items) }
+    - else
+      = build_list(@resource, custom_fileds, @items)
+    = paginate @items
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+= render "admin/shared/user_profile"
+.grid_2
+  = build_sidebar
+.grid_10
+  = yield :main_grid

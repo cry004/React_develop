@@ -1,0 +1,20 @@
+- if params["action"] == "forgot_password" || params["action"] == "send_password"
+  p ご登録済のメールアドレスを入力してください
+ul
+  - if params["action"] == "forgot_password" || params["action"] == "send_password"
+    - submit_text = "パスワードの再設定方法を送信する"
+  li
+    = form.label :email, Typus.user_class.human_attribute_name(:email)
+    = form.text_field :email, :size => 20, :class => "text", :autofocus => 'autofocus'
+  - if controller.controller_name == 'session'
+    li
+      = form.label :password, Typus.user_class.human_attribute_name(:password)
+      = form.password_field :password, :size => 20, :class => "text"
+  - if params["action"] == "new"
+    li
+      p
+        | 利用者等がログインしたことをもって
+        = link_to "利用規約","/admin/terms"
+        |に同意したものとみなします
+  li
+    = form.submit Typus::I18n.t(submit_text), :class => "button", 'data-disable-with' => Typus::I18n.t("Sending data ...")

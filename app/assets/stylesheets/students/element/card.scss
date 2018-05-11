@@ -1,0 +1,29 @@
+.el-card {
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 15px;
+  background-color: $color-white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  &:hover {
+    background-color: $color-white-hover;
+    .el-card-close {
+      opacity: 1;
+    }
+  }
+  &-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+    background-image: image-url('students/common/icon/close-white.png');
+    background-size: cover;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+}

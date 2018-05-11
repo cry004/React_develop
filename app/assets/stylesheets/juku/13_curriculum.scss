@@ -1,0 +1,504 @@
+.curriculum_label {
+  background-color: #D0D0D0;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  padding: 3px 8px;
+  text-align: center;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+.curriculum_target-text {
+  font-size: 1.2rem;
+  color: #000;
+  display: inline-block;
+  vertical-align: middle;
+}
+.curriculum_status {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  &-container {
+    position: relative;
+  }
+  &-per, &-info, &-total {
+    display: table-cell;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0 5px;
+  }
+  &-header {
+    width: 344px;
+    margin-bottom: 8px;
+  }
+  &-per {
+    color: $pink-color;
+  }
+  &-info {
+    width: 80%;
+  }
+  &-total {
+    text-align: right;
+  }
+  &-bar {
+    width: 344px;
+    height: 14px;
+    border-radius: 8px;
+    border: 1px solid #c2c2c2;
+    position: relative;
+    margin-bottom: 8px;
+    &-content {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      content: "";
+      width: 0%;
+      height: 14px;
+      border-radius: 8px;
+      background-color: $blue-color;
+    }
+  }
+}
+.curriculum_complete {
+  display: inline-block;
+  vertical-align: middle;
+  .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  .complete {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $blue-color;
+    .movie_num, .slush {
+      font-size: 2.4rem;
+    }
+  }
+}
+.Curriculums {
+  &__container {
+    opacity: 0;
+  }
+  &__header {
+    position: fixed;
+    top: 81px;
+    z-index: 1;
+    display: table;
+    padding: 17px 20px;
+    background-color: #FFF;
+    width: calc(100% - 40px);
+    min-width: 960px;
+    border-bottom: 1px solid $blue-color;
+    &-left {
+      display: table-cell;
+      vertical-align: top;
+    }
+    &-right {
+      display: table-cell;
+      text-align: right;
+      vertical-align: top;
+    }
+    .el-button + .el-button {
+      margin-left: 12px;
+    }
+    .avatar, .info-1, .info-2 {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .avatar {
+      padding-right: 18px;
+    }
+    .info-1 {
+      padding-right: 30px;
+    }
+    .name {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .grade {
+      font-size: 1.0rem;
+    }
+    .history {
+      font-size: 1.2rem;
+      color: #707070;
+    }
+    .subject {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  &-info {
+    width: 100%;
+    min-width: 960px;
+    margin-top: 133px;
+    display: table;
+    border-bottom: 1px solid #d1d1d1;
+    .info-1, .info-2, .info-3, .info-4, .info-5 {
+      display: table-cell;
+      padding: 15px;
+      vertical-align: top;
+    }
+    .info-1 {
+      width: 150px;
+      background-color: #F0F2F5;
+      border-right: 1px solid #d1d1d1;
+    }
+    .info-2 {
+      background-color: #FFF;
+      width: 500px;
+      &-container {
+        display: table;
+        width: 100%;
+      }
+    }
+    .info-3 {
+      background-color: #fff;
+      &.right {
+        text-align: right;
+      }
+    }
+    .info-4, .info-5 {
+      background-color: #FFF;
+      p {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.2rem;
+      }
+      > .calendar {
+        display: inline-block;
+        vertical-align: middle;
+        width: 140px;
+        height: 30px;
+      }
+    }
+    .info-4 {
+      width: 61%;
+      padding: 15px 0 15px 15px;
+    }
+    .info-5 {
+      text-align: right;
+      width: 39%;
+      padding: 15px 15px 15px 0;
+    }
+    .selected-movie {
+      color: $pink-color;
+      font-weight: bold;
+      margin-right: 30px;
+      display: inline-block;
+      .number {
+        font-size: 2rem;
+      }
+    }
+    .average-movie {
+      color: $blue-color;
+      font-weight: bold;
+      display: inline-block;
+    }
+    .subject, .grade_subject {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .grade_subject {
+      display: table-cell;
+      vertical-align: top;
+      width: 90px;
+    }
+    .end_date, .edit {
+      font-size: 1.2rem;
+      letter-spacing: 0.001em;
+    }
+    .end_date {
+      margin-right: 1rem;
+    }
+    .edit {
+      display: block;
+      color: #707070;
+      font-weight: normal;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  }
+  &-container {
+    width: 100%;
+    min-width: 960px;
+    display: table;
+    border-bottom: 1px solid #d1d1d1;
+  }
+  &-menu {
+    display: table-cell;
+    min-width: 180px;
+    background-color: #F0F2F5;
+    border-right: 1px solid #d1d1d1;
+    vertical-align: top;
+    ul {
+      li {
+        a {
+          cursor: pointer;
+          display: block;
+          padding: 15px;
+          font-size: 1.4rem;
+          font-weight: bold;
+          text-decoration: none;
+          color: $pink-color;
+          &.active {
+            background-color: $lightblue-color;
+          }
+        }
+      }
+    }
+  }
+  &-detail {
+    display: table-cell;
+    background-color: #FFF;
+    width: 100%;
+    .time_movie-container {
+      text-align: right;
+      display: block;
+      width: calc(100% - 40px);
+      padding: 5px 20px;
+      border-bottom: 1px solid #d1d1d1;
+      .title {
+        font-size: 1.2rem;
+        font-weight: normal;
+        display: inline-block;
+        margin-right: 20px;
+        color: #767676;
+        vertical-align: middle;
+        .pink {
+          color: $pink-color;
+          font-weight: bold;
+        }
+      }
+      .time_movie {
+        font-size: 2.4rem;
+        font-weight: bold;
+        display: inline-block;
+        vertical-align: middle;
+        color: $pink-color;
+      }
+    }
+    .legend {
+      text-align: left;
+      padding: 15px 0;
+      > p {
+        margin-left: 300px;
+      }
+      i {
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+    }
+    .curriculum {
+      display: table;
+      width: 100%;
+      &-subject {
+        display: table-cell;
+        vertical-align: top;
+        padding: 20px;
+        .subject {
+          font-size: 1.6rem;
+          font-weight: bold;
+        }
+      }
+      &-title {
+        display: table-cell;
+        width: 220px;
+        vertical-align: top;
+        padding: 20px;
+        .title {
+          font-size: 1.6rem;
+          font-weight: bold;
+          color: $blue-color;
+        }
+      }
+      &-contents {
+        display: block;
+        width: 100%;
+      }
+      &-container {
+        width: 100%;
+        display: table;
+        padding: 15px 0 0;
+        min-height: 100px;
+        &.blue {
+          background-color: #EAF5FF;
+        }
+        &.pink {
+          background-color: #ffeeee;
+        }
+      }
+      &-process, &-info, &-settings {
+        display: table-cell;
+        vertical-align: top;
+      }
+      &-process {
+        width: 68px;
+        position: relative;
+        padding-left: 40px;
+        input[type='checkbox'] + label {
+          position: absolute;
+          left: 0;
+          top: 5px;
+        }
+        i {
+          position: absolute;
+        }
+        &.top {
+          &:before {
+            border: none;
+          }
+          &:after {
+            top: 36px;
+          }
+        }
+        &.on {
+          &:before {
+            border-color: $blue-color;
+          }
+          &:after {
+            border-color: $blue-color;
+          }
+        }
+        &.off {
+          &:after {
+            border: none;
+          }
+        }
+        &.end {
+          &:before {
+            border-color: $blue-color;
+          }
+          &:after {
+            border-color: #dcdcdc;
+          }
+        }
+        &.bottom {
+          &:after {
+            border: none;
+          }
+        }
+        &:before {
+          content: "";
+          height: 16px;
+          border-left: 4px solid #dcdcdc;
+          position: absolute;
+          left: 56px;
+          top: -16px;
+        }
+        &:after {
+          content: "";
+          height: calc(100% - 36px);
+          display: block;
+          border-left: 4px solid #dcdcdc;
+          position: absolute;
+          left: 56px;
+          top: 36px;
+        }
+      }
+      &-info {
+        position: relative;
+        border-bottom: 1px solid #eaeaea;
+        .end_date {
+          font-size: 1.2rem;
+          color: #767676;
+          line-height: 2;
+          &.pink {
+            color: $pink-color;
+          }
+        }
+        .time {
+          font-size: 1.2rem;
+          color: #000;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .title {
+          font-size: 1.4rem;
+          font-weight: bold;
+          color: #000;
+          line-height: 2;
+        }
+        .caption {
+          font-size: 1.2rem;
+          line-height: 1.8;
+        }
+        .movie_name {
+          margin-top: 5px;
+          font-size: 12px;
+          color: #767676;
+        }
+        .movie_name_section:last-child {
+          margin-bottom: 15px;
+        }
+        .btns {
+          padding: 20px 0;
+          div {
+            display: inline-block;
+          }
+          .btns-area {
+            display: inline-block;
+            padding: 6px 15px;
+            background-color: $lightblue-color;
+            text-align: center;
+            margin-right: 12px;
+            margin-bottom: 6px;
+            .title {
+              font-size: 1rem;
+              font-weight: bold;
+              color: $blue-color;
+              margin-bottom: 5px;
+              &.print, &.movie {
+                &:before {
+                  content: '';
+                  background-repeat: no-repeat;
+                  background-position: 0 0;
+                  display: inline-block;
+                  width: 20px;
+                  height: 20px;
+                  vertical-align: middle;
+                  margin-right: 5px;
+                }
+              }
+              &.print {
+                &:before {
+                  background-image: image-url('juku/icon-print-blue.png');
+                }
+              }
+              &.movie {
+                &:before {
+                  background-image: image-url('juku/icon-play.png');
+                }
+              }
+            }
+            .el-button + .el-button {
+              margin-left: 6px;
+            }
+          }
+        }
+      }
+      &-settings {
+        width: 20%;
+        text-align: right;
+        padding: 0 20px;
+        border-bottom: 1px solid #eaeaea;
+        position: relative;
+        .el-button {
+          margin-bottom: 15px;
+        }
+        .btns {
+          margin-bottom: 10px;
+          li {
+            display: inline-block;
+            margin-right: 12px;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

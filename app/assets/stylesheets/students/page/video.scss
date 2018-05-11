@@ -1,0 +1,548 @@
+// ios
+.is-ios {
+  .page-video {
+    .video-section {
+      .video:before {
+        background-image: none;
+      }
+    }  
+  }
+}
+
+.page-video {
+  margin: 20px;
+  .bl-tab {
+    position: relative;
+    z-index: 1;
+  }
+  .video-section {
+    width: 52%;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    &.is-locked {
+      .video:before {
+        background-image: none;
+      }
+    }
+    .video {
+      position: relative;
+      width: 100%;
+      height: calc(29.25vw - 11px);
+      min-height: 281px;
+      background-color: #eeeeee;
+      overflow: hidden;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: image-url('juku/loading-25.gif');
+        background-repeat: no-repeat;
+        background-position: center center;
+        z-index: 0;
+      }
+      &:hover {
+        .video-control {
+          opacity: 1;
+        }
+      }      
+      &-locked {
+        width: 100%;
+        height: 100%;
+        line-height: 1.5;
+        background-size: cover;
+        .el-button {
+          margin: 40px auto 0;
+        }
+        &-container {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          align-content: center;
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.7);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &-heading {
+          font-size: $font-size-50;
+          color: $color-white;
+          &:before {
+            margin-right: 3px;
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 25px;
+            height: 29px;
+            background-size: cover;
+            background-image: image-url('students/common/icon/key-white.png');
+          }
+        }
+        &-description {
+          margin-top: 15px;
+          font-size: $font-size-20;
+          color: $color-white;
+        }
+      }
+      &.is-enlarged {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 5000;
+        height: 100%;
+        background-color: $color-black;
+        video {
+          width: 100%;
+          height: 100%;
+        }
+        .video {
+          height: 100%;
+          &-move {
+            &-prev,
+            &-next {
+              width: 55.5px;
+              height: 60px;
+            }
+            &-next {
+              margin-left: 70px;
+            }
+            &-play {
+              margin-left: 70px;
+              width: 58.5px;
+              height: 60px;
+            }
+          }
+          &-control {
+            padding: 35px 20px 0;
+            height: 110px;
+            &-position {
+              margin-bottom: 12px;
+            }
+            &-positionbar {
+              height: 18px;
+              &:after {
+                top: 6px;
+                left: 0;
+                height: 5px;
+              }
+              span {
+                top: 6px;
+                height: 5px;
+                &:after {
+                  right: -9px;
+                  top: -6px;
+                  width: 18px;
+                  height: 18px;
+                }
+              }
+            }
+            &-volume {
+              &-icon {
+                width: 34.5px;
+                height: 27px;
+                background-size: auto 27px;
+              }
+              &-bar {
+                margin-left: 35px;
+                width: 80px;
+              }
+            }
+            &-time {
+              margin-top: 0;
+              margin-left: 40px;
+              font-size: $font-size-50;
+            }
+            &-speed {
+              font-size: $font-size-50;
+              padding: 4px 7px;
+            }
+            &-screen {
+              width: 39px;
+              height: 39px;
+              margin-top: -4px;
+              margin-left: 40px;
+              background-image: image-url('students/page/video/windowed.png');
+            }
+          }
+        }
+      }
+      video {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        &.is-visible {
+          opacity: 1;
+        }
+      }
+      .is-visible  {
+        .video-overlay {
+          opacity: 1;
+          z-index: 2;
+        }
+        .video-control {
+          opacity: 1;
+          z-index: 3;
+        }
+        .video-move {
+          opacity: 1;
+          z-index: 3;
+        }
+      }
+      &-overlay {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left:0;
+        background-color: rgba(0, 0, 0, 0.2);
+        transition: opacity 0.2s;
+        z-index: 2;
+      }
+      &-move {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: -1;
+        transition: opacity 0.2s, z-index 0.2s;
+        &-prev,
+        &-next,
+        &-play {
+          display: block;
+          background-size: cover;
+          height: 40px;
+          cursor: pointer;
+        }
+        &-prev {
+          width: 37px;
+          background-image: image-url('students/page/video/10prev.png');
+        }
+        &-next {
+          margin-left: 40px;
+          width: 37px;
+          background-image: image-url('students/page/video/10next.png');
+        }
+        &-play {
+          margin-left: 40px;
+          width: 39px;
+          background-image: image-url('students/page/video/play.png');
+          &.is-paused {
+            background-image: image-url('students/page/video/pause.png');
+          }
+        }
+      }
+      &-control {
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        padding: 25px 12px 0;
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(0, 0, 0, 0.8);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        transition: opacity 0.2s;
+        z-index: 2;
+        &-position {
+          margin-bottom: 5px;
+        }
+        &-positionbar {
+          position: relative;
+          height: 14px;
+          cursor: pointer;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+          span {
+            position: absolute;
+            left: 0;
+            top: 6px;
+            height: 3px;
+            width: 0;
+            background-color: $color-white;
+            &:after {
+              content: "";
+              position: absolute;
+              right: -6px;
+              top: -4px;
+              width: 11px;
+              height: 11px;
+              background-color: $color-white;
+              border-radius: 50%;
+            }
+          }
+        }
+        &-volume {
+          &-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 23px;
+            height: 18px;
+            background-size: auto 18px;
+            background-image: image-url('students/page/video/mute.png');
+            background-repeat: no-repeat;
+            cursor: pointer;
+            &.is-unmute {
+              background-image: image-url('students/page/video/unmute.png');
+            }
+          }
+          &-bar {
+            margin-left: 15px;
+            display: inline-block;
+            vertical-align: middle;
+            width: 50px;
+          }
+        }
+        &-time {
+          margin-top: 4px;
+          margin-left: 16px;
+          font-size: $font-size-10;
+          line-height: 1.3;
+        }
+        &-speed {
+          border-radius: 2px;
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          font-size: $font-size-10;
+          padding: 2px 5px;
+          line-height: 1;
+          cursor: pointer;
+        }
+        &-screen {
+          width: 19px;
+          height: 18px;
+          margin-left: 15px;
+          background-image: image-url('students/page/video/fullscreen.png');
+          background-size: cover;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    width: calc(100% - 52% - 20px);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .videoinfo {
+    position: relative;
+    margin-top: 12px;
+    width: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background-color: $color-white;
+    .el-watched {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+    }
+    &-info {
+      padding: 13px;
+      &-subject {
+        font-size: $font-size-20;
+      }
+      &-title {
+        margin-top: 10px;
+        font-size: $font-size-50;
+        height: 1.2em;
+        overflow: hidden;
+      }
+      &-subtitle {
+        margin-top: 10px;
+        font-size: $font-size-20;
+        color: $color-text-gray;
+        height: 1.2em;
+        overflow: hidden;
+      }
+    }
+    &-buttons {
+      border-top: 1px solid $color-border-gray;
+      padding: 14px;
+      &-button,
+      &-watched {
+        font-size: $font-size-20;
+        color: $color-text-gray;
+      }
+      &-button {
+        margin-right: 35px;
+        line-height: 19px;
+        cursor: pointer;
+        transition: color 0.15s ease;
+        &:before {
+          content: "";
+          background-size: cover;
+          display: inline-block;
+          vertical-align: top;
+          margin-right: 5px;
+        }
+        &:hover {
+          color: $color-gray-hover;
+        }
+        &.is-bookmark {
+          &:before {
+            margin-top: -2px;
+            width: 20px;
+            height: 19px;
+            background-image: image-url('students/common/icon/star.png');
+          }
+          &.is-booked {
+            color: $color-black;
+            font-weight: bold;
+            &:before {
+              background-image: image-url('students/common/icon/star-yellow.png');
+            }
+          }
+        }
+        &.is-question {
+          &:before {
+            width: 18px;
+            height: 17px;
+            background-image: image-url('students/common/icon/question.png');
+          }
+        }
+        &.is-share {
+          &:before {
+            width: 20px;
+            height: 20px;
+            background-image: image-url('students/common/icon/share.png');
+          }
+        }
+      }
+    }
+  }
+
+  .videos {
+    .videos-section {
+      padding: 15px;
+      width: 100%;
+      &:first-child {
+        border-bottom: 1px solid $color-border-gray;
+      }
+    }
+    .label {
+      font-size: $font-size-20;
+      color: $color-text-gray;
+      font-weight: bold;
+    }
+    &-video {
+      margin-top: 20px;
+      line-height: 1.25;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+      &:hover {
+        opacity: .9
+      }
+      &-text {
+        margin-left: 10px;
+        width: calc(100% - 206px - 10px);
+      }
+      &-title {
+        font-size: $font-size-40;
+        max-height: 2.5em;
+        overflow: hidden;
+      }
+      &-subtitle {
+        margin-top: 10px;
+        font-size: $font-size-20;
+        color: $color-text-gray;
+        overflow: hidden;
+        max-height: 2.5em;
+      }
+    }
+  }
+
+
+  .chapters {
+    margin: 20px auto 0;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0 15px;
+    background-color: $color-white;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .chapter {
+    display: inline-block;
+    font-size: $font-size-30;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    cursor: pointer;
+    &:hover,
+    &.is-current {
+      border-bottom: 4px solid #001fd7;
+    }
+    &:last-child {
+      margin-right: 20px;
+    }
+    & + .chapter {
+      margin-left: 40px;
+    }
+  }
+  .content {
+    position: relative;
+    background-color: $color-white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    &.tab-commentary {
+      .commentary {
+        display: block;
+      }
+    }
+    &.tab-textbook {
+      .textbook {
+        display: block;
+      }
+    }
+    &.tab-answer {
+      .answer {
+        display: block;
+      }
+    }
+    &.tab-videos {
+      .videos {
+        display: block;
+      }
+    }
+  }
+  .answer,
+  .commentary,
+  .textbook,
+  .videos {
+    display: none;
+    height: calc(100vh - 120px - 54px - 40px); //100vh - headerHeight - tabHeight - margin
+    overflow: scroll;
+    img {
+      width: 100%;
+    }
+  }
+  .commentary {
+    overflow: hidden;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+}

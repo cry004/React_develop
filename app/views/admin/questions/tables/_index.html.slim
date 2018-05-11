@@ -1,0 +1,23 @@
+- yield_name = "table_headers_#{model}_#{rand(100)}"
+- content_for yield_name do
+  thead
+    tr
+      - headers.each do |header|
+        th
+          = header
+table
+  = yield yield_name
+  - items.each do |item|
+    tr[class='"#{cycle('even', 'odd')}"' id='"#{dom_id(item)}"']
+    - table_fields_for_item(item, fields).each_with_index do |field, index|
+      td
+        // 質問のstateときには, リンクにする。
+        - if index == 9
+          = button_to decorate_state(item), { controller: "admin/questions", action: "show", id: item.id }
+        - elsif index == 0
+          = field
+          .actions
+            = link_to "内容を見る", "/admin/questions/show/#{item.id}"
+        - else
+          = field
+  = yield yield_name

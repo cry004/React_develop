@@ -1,0 +1,70 @@
+= render "form_javascripts"
+= form_for @item, :url => options, :html => { :class => "resource", :multipart => true } do |form|
+  = render "helpers/admin/resources/errors"
+  fieldset.inputs
+    ol
+      li#admin_users_email
+        label for="admin_user_email" 教師ID
+        p
+          = @admin_user.kys_cd || "未設定"
+      li#admin_users_last_name
+        = label_tag "admin_user_last_name", "姓"
+        = text_field_tag "admin_user[last_name]", @admin_user.last_name, class: "text"
+      li#admin_users_first_name
+        = label_tag "admin_user_first_name", "名"
+        = text_field_tag "admin_user[first_name]", @admin_user.first_name, class: "text"
+      li#admin_users_last_name_kana
+        = label_tag "admin_user_first_name", "セイ"
+        = text_field_tag "admin_user[last_name_kana]", @admin_user.last_name_kana, class: "text"
+      li#admin_users_first_name_kana
+        = label_tag "admin_user_first_name", "メイ"
+        = text_field_tag "admin_user[first_name_kana]", @admin_user.first_name_kana, class: "text"
+      li#admin_users_email
+        = label_tag "admin_user_email", "メールアドレス"
+        p
+          = @admin_user.email
+      li#admin_users_birthday
+        = label_tag "admin_user_first_name", "誕生日"
+        .inputWrapper
+          .inputWrapper-beforeText__input
+            = select_tag :birthday_year, options_for_select((1940..Time.now.year).to_a, @admin_user.birthday_year), include_blank: true
+          .inputWrapper-beforeText__text
+            | 年
+          .inputWrapper-beforeText__input
+            = select_tag :birthday_month, options_for_select((1..12).to_a, @admin_user.birthday_month), include_blank: true
+          .inputWrapper-beforeText__text
+            | 月
+          .inputWrapper-beforeText__input
+            = select_tag :birthday_day, options_for_select((1..31).to_a, @admin_user.birthday_day), include_blank: true
+          .inputWrapper-beforeText__text
+            | 日
+      li#admin_users_tel
+        = label_tag "admin_user_tel", "電話番号"
+        = text_field_tag "admin_user[tel]", @admin_user.tel, class: "text"
+
+  fieldset.buttons
+    ol
+      - build_save_options.each do |key, value, special|
+        - message = Typus::I18n.t(value)
+        - options = { :name => key, :onclick => "Typus.setConfirmUnload(false);", 'data-disable-with' => "処理中...", id: "typus__fieldset__button" }
+        li
+          = submit_tag "更新する", options
+  javascript:
+    $(function(){
+      // 誕生日セレクタの選択が一つでも空行だった場合更新ボタンをdisabledにする
+      // 誕生日セレクタの選択が全て選択された場合にdisabledを解除し、3つのセレクタからyyyymmddのadmin_user[birthday]パラメータを作成し、input[hidden]でappendする。
+      $(".inputWrapper-beforeText__input select").change(function(){
+        var birthday_year = $("#birthday_year").val(),birthday_month = $("#birthday_month").val(), birthday_day = $("#birthday_day").val();
+        if(birthday_year != "" && birthday_month != "" && birthday_day != ""){
+          birthday_param = birthday_year + ("0" + birthday_month).slice(-2) + ("0" + birthday_day).slice(-2);
+          if($("#admin_user_birthday")[0]) {
+             $("#admin_user_birthday")[0].value = birthday_param
+          } else {
+            $("<input>", { type: 'hidden', id: 'admin_user_birthday', name: 'admin_user[birthday]', value: birthday_param}).appendTo('#admin_users_birthday');
+          }
+          $("#typus__fieldset__button").prop("disabled", false);
+        } else {
+          $("#typus__fieldset__button").prop("disabled", true);
+        }
+      })
+    });

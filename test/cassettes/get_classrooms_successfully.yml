@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teacherapp.trygroup.co.jp/cramschooladmin/dev/TMP.aspx?tdfkn_cd=01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/html; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 23 Jun 2016 06:19:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7IlRNUHMiOlt7IlRNUF9DRCI6IjAxNjIiLCJUTVBfTk0iOiLp
+        h47luYzlgIvliKUifSx7IlRNUF9DRCI6IjAxNjMiLCJUTVBfTk0iOiLlhavo
+        u5LlgIvliKUifSx7IlRNUF9DRCI6IjAxNjQiLCJUTVBfTk0iOiLlubPlsqHl
+        gIvliKUifSx7IlRNUF9DRCI6IjAxMDEiLCJUTVBfTk0iOiLljJfmtbfpgZMi
+        fSx7IlRNUF9DRCI6IjAxMTEiLCJUTVBfTk0iOiLmnK3luYzpp4XliY3lgIvl
+        iKUifSx7IlRNUF9DRCI6IjAxNTEiLCJUTVBfTk0iOiLmnK3luYzpp4XliY3l
+        gIvliKUg6auY562J6YOoIn0seyJUTVBfQ0QiOiIwMTUyIiwiVE1QX05NIjoi
+        6bq755Sf5YCL5YilIn0seyJUTVBfQ0QiOiIwMTUzIiwiVE1QX05NIjoi5YWD
+        55S65YCL5YilIn0seyJUTVBfQ0QiOiIwMTU0IiwiVE1QX05NIjoi5Y2D5q2z
+        6aeF5YmN5YCL5YilIn0seyJUTVBfQ0QiOiIwMTI0IiwiVE1QX05NIjoi5Y2X
+        6YO377yX5LiB55uu5YCL5YilIn0seyJUTVBfQ0QiOiIwMTI5IiwiVE1QX05N
+        Ijoi5pyI5a+S5Lit5aSu5YCL5YilIn0seyJUTVBfQ0QiOiIwMTI4IiwiVE1Q
+        X05NIjoi5paw5pyt5bmM5YCL5YilIn0seyJUTVBfQ0QiOiIwMTIxIiwiVE1Q
+        X05NIjoi5pyt5bmM5pet44O25LiY5YCL5YilIn0seyJUTVBfQ0QiOiIwMTIy
+        IiwiVE1QX05NIjoi5pyt5bmM5YaG5bGx5YCL5YilIn0seyJUTVBfQ0QiOiIw
+        MTI3IiwiVE1QX05NIjoi5pyt5bmM5YaG5bGx5YCL5YilIOmrmOetiemDqCJ9
+        LHsiVE1QX0NEIjoiMDEyNSIsIlRNUF9OTSI6IuWuruOBruayouWAi+WIpSJ9
+        LHsiVE1QX0NEIjoiMDEyNiIsIlRNUF9OTSI6IuaJi+eosumnheWJjeWAi+WI
+        pSJ9LHsiVE1QX0NEIjoiMDEyMyIsIlRNUF9OTSI6IuacreW5jOeQtOS8vOWA
+        i+WIpSJ9LHsiVE1QX0NEIjoiMDE1NSIsIlRNUF9OTSI6IuaXreW3nemnheWJ
+        jeWAi+WIpSJ9LHsiVE1QX0NEIjoiMDE1NiIsIlRNUF9OTSI6IuawuOWxseWA
+        i+WIpSJ9LHsiVE1QX0NEIjoiMDE1NyIsIlRNUF9OTSI6IuW5s+WyuOWAi+WI
+        pSJ9LHsiVE1QX0NEIjoiMDE1OCIsIlRNUF9OTSI6IuaYn+e9rumnheWJjeWA
+        i+WIpSJ9LHsiVE1QX0NEIjoiMDE1OSIsIlRNUF9OTSI6IuWkp+iwt+WcsOWA
+        i+WIpSJ9LHsiVE1QX0NEIjoiMDE2MSIsIlRNUF9OTSI6IuWkp+mAmuWAi+WI
+        pSJ9XX0sIm1ldGEiOnsiY29kZSI6MjAwLCJlcnJvcl9tZXNzYWdlIjoiIn19
+    http_version: 
+  recorded_at: Thu, 23 Jun 2016 06:19:17 GMT
+recorded_with: VCR 3.0.1

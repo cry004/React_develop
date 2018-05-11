@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0cnlpdC1zZXJ2ZXJAdHJ5aXQtc2VydmVyLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic2NvcGUiOiJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL3ByZWRpY3Rpb24iLCJhdWQiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdG9rZW4iLCJleHAiOjE0NjY2NjQzMjAsImlhdCI6MTQ2NjY2NDIwMH0.ABYVWYfQU_4tioZ-MDDqHNu19HtyReV6TWS4weh4J5Vk1DRm83cD9Tf12qPIsUQYQ9Tf2-DAu5YlO-UIWrIaeyaDUbp08ZUYPObfWIaAY64qsWwLplr4d-SUZh_PlpvPcf4GF7KnkOBy2iMrU7oUQmq48qjEJLg7Bd5cy9-qN92TD0_L4Sna1OhgLdzn4VAowWqvYHzxotvE8gTLrYJWoNCvlA08-Dd0hSxJrD7rnokzm6V1DbCgFRHUGdsxg_ML8F3Fui7n1WGlo33o0mznt2w27lPVg2NqMcZ67uJfSw9T0dXbVPvJv2nt-j0AjSRvGZU6LJSloCTHQPrVL3QpuA
+    headers:
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 23 Jun 2016 06:44:20 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      P3p:
+      - CP="This is not a P3P policy! See https://support.google.com/accounts/answer/151657?hl=en
+        for more info."
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Set-Cookie:
+      - NID=80=pTjOyYC_JFSi9yM0tgJLDxbShISmJIqBmutiZfOwcya_Yvw6FQbAwIA-AFahxhAfgi__4iWoON0oE2GcvJwbDH8ZfnlRYFickeSkqcoW8nkfxw1xyRyKahWwTbEULJMr;Domain=.google.com;Path=/;Expires=Fri,
+        23-Dec-2016 06:44:20 GMT;HttpOnly
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "access_token" : "ya29.CjMKA7sLCGtNFrFSGy9NcRT3ZadYt2vwEAqVO0OFhDPqhbpTzUyzISJQCN7J6xgiaIzS0x0",
+          "token_type" : "Bearer",
+          "expires_in" : 3600
+        }
+    http_version: 
+  recorded_at: Thu, 23 Jun 2016 06:44:20 GMT
+recorded_with: VCR 3.0.1

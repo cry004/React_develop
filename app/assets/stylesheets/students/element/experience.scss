@@ -1,0 +1,45 @@
+.el-experience {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 362px;
+  height: 60px;
+  border-radius: 100px;
+  background-color: $color-blue;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity .5s;
+  z-index: 4000;
+  &-close {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+    padding: 10px;
+    background-image: image-url('students/common/icon/close-white.png');
+    background-size: 16px 16px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    box-sizing: content-box;
+  }
+  &-text {
+    text-align: center;
+    color: $color-white;
+    font-size: $font-size-70;
+    font-weight: bold;
+    line-height: 60px;
+    &-label {
+      margin-right: 10px;
+      font-size: $font-size-20;
+      font-weight: normal;
+      vertical-align: middle;
+    }
+  }
+  &.is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,41 @@
+doctype html
+html lang="ja"
+  head
+    meta charset='UTF-8'
+    script
+      | if( location.hash === '#/privacy' || location.hash === '#/commerce_law') {
+      | const meta = document.createElement('meta');
+      | meta.name = "viewport";
+      | meta.content = "width=device-width; initial-scale=1.0;";
+      | document.getElementsByTagName("head")[0].appendChild(meta);}
+    title Try IT
+    = stylesheet_link_tag 'students/application', media: 'all'
+    /= csrf_meta_tags
+    meta name='robots' content='noindex,nofollow,noarchive'
+    javascript:
+      window['GoogleAnalyticsObject'] = 'ga';
+      window['ga'] = window['ga'] || function() {
+        (window['ga'].q = window['ga'].q || []).push(arguments)
+      };
+      if ((navigator.userAgent.indexOf('iPhone') > 0) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+        document.write('<meta name="viewport" content="target-densitydpi=device-dpi, width=1100, maximum-scale=1.0, user-scalable=yes">');
+      }
+  body id="body" data-www-host="#{Settings.hostname.www}" data-student-api="#{Settings.api_server_domain}"
+    == yield
+    = javascript_include_tag('students/application')
+
+    / script
+    /   |  if (navigator.userAgent.indexOf('MSIE 9.0') >= 0 && location.host != 'studentie.try-it.jp') { location.href = 'https://studentie.try-it.jp'; }
+    /   |  if (navigator.userAgent.indexOf('MSIE 9.0') <  0 && location.host == 'studentie.try-it.jp') { location.href = 'https://student.try-it.jp'; }
+    /   |  if (location.host == 'studentie.try-it.jp') { document.body.setAttribute('data-api-server', 'https://studentie.try-it.jp'); }
+    / Custom placeholder javascipt for IE
+    script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"
+    /- if Rails.env.include?('production')
+    javascript:
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-61390924-3', 'auto');
+      ga('send', 'pageview');

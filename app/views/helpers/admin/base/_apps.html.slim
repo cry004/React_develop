@@ -1,0 +1,13 @@
+ul
+  - if !params[:application] && params[:controller].include?('dashboard')
+    - dashboard = 'active'
+  li
+    = link_to Typus::I18n.t("Dashboard"), admin_dashboard_index_path, :class => dashboard
+  - if admin_user.role == "answerer"
+    li
+      = link_to "ユーザプロフィール編集", controller: "admin/admin_users", action: "edit", id: @admin_user.id
+    li
+      = link_to "ポイント換金リクエスト履歴", controller: "admin/fees", action: "index"
+  li
+    = link_to "よくある質問", controller: "admin/faq", action: "index"
+

@@ -1,0 +1,53 @@
+// ================
+// # reset
+// ================
+ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+ul, li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+h1,h2,h3 {
+  margin: 0;
+}
+
+input:-webkit-autofill {
+  background-image: inherit;
+  background-color: inherit;
+}
+
+body {
+  font-family: "Helvetica Neue", helvetica, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, sans-serif;
+  color: $color-text-black;
+  -webkit-text-size-adjust: 100%;
+}
+
+// fixme: グローバルに出ているのでbl-markなどに直したい(API修正してもらう必要がある)
+.mark {
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+input[type="checkbox"],
+textarea {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  &:focus {
+    outline: 0;
+    border: 1px solid $color-blue;
+  }
+}
+button {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  &:focus {
+    outline: 0;
+  }
+}

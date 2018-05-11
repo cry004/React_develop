@@ -1,0 +1,15 @@
+- @answerer_post = @item.posts.where(postable_type: "AdminUser", auto_reply: false, state: "draft", state: ["accepted_unread", "draft","accepted_read"]).last
+- content_for :main_grid do
+  = link_to "一覧へ戻る", "/admin/questions/index"
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @item, answerer_post: @answerer_post }
+  - if @item.can_examine? && @admin_user.role != "answerer"
+    = button_to "検閲を始める", "/admin/questions/examine/#{@item.id}", class: "typus__button__ok"
+  - if @item.can_assign? && @admin_user.role != "gatekeeper"
+    = button_to "回答を始める", "/admin/questions/assign/#{@item.id}", class: "typus__button__ok"
+  - if @item.can_work? && (@admin_user.role == "executive_answerer" || @admin_user.role == "admin") && @item.answerer_id != @admin_user.id
+    = button_to "承認を始める", "/admin/questions/work/#{@item.id}", class: "typus__button__ok"
+  - if (@admin_user.role == "admin" || @admin_user.role == "executive_answerer") && @item.state != "open" && @item.can_force_reject?
+    = button_to "質問を差し戻す", "/admin/questions/force_reject_edit/#{@item.id}", class: "typus__button__cancel"
+
+.typus__main__content__show
+  = yield :main_grid

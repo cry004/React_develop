@@ -1,0 +1,21 @@
+- content_for :main_grid do
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @post.question }
+  - if @post.question.can_check? && @post.executive_answerer_id == @admin_user.id
+    div.checking
+      = button_to "承認作業をやめる", "/admin/questions/stop_work/#{@post.question.id}", class: "typus__button__cancel", data: {confirm: "承認作業をやめてもよろしいでしょうか？" }
+      - if @admin_user.role == "admin" || @admin_user.role == "executive_answerer"
+        = button_to "質問を差し戻す", "/admin/questions/force_reject_edit/#{@post.question.id}", class: "typus__button__cancel"
+      = image_tag @post.photo.try(:resource_url), class: "typus_image"
+      = form_tag({ controller: "admin/posts", action: "judge", id: @post.id })
+        = hidden_field_tag :id, @post.id
+        = submit_tag "回答を承認する", name: :accept, data: {confirm: "承認してよろしいでしょうか？" }, class: "typus__button__ok"
+      h3 回答を不採用にする
+      = form_tag({ controller: "admin/posts", action: "judge", id: @post.id })
+        = hidden_field_tag :id, @post.id
+        = label_tag :refuse_reason_select, "理由"
+        = select_tag :refuse_reason_select, options_for_select(Settings.answer_refuse_reason), placeholder: "回答を不採用の理由を選択してください", class: "typus__refuse_reason_select"
+        = text_area :refuse_reason_text, nil, placeholder: "回答不採用の理由を140字以内で記入してください", class: "typus__refuse_reason_text"
+        = submit_tag "不採用とし、自分で回答する", data: {confirm: "回答を不採用にしてもよろしいでしょうか？"}, class: "typus__button__cancel"
+
+.typus__main__content__show
+  = yield :main_grid

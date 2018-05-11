@@ -1,0 +1,27 @@
+.bl-alert {
+  position: fixed;
+  display: block;
+  z-index: 5000;
+  width: 100%;
+  height: 66px;
+  max-height: 66px;
+  background: #d13820;
+  line-height: 66px;
+  text-align: center;
+  color: #fff;
+  transition: 1s ease;
+  transform: translateY(0);
+  &.u-hidden {
+    transform: translateY(-66px);
+  }
+  &-closer{
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+    background-image: image-url('students/common/icon/close-white.png');
+    background-size: cover;
+    cursor: pointer;
+  }
+}

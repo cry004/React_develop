@@ -1,0 +1,17 @@
+doctype html
+html lang="ja"
+  head
+body
+  div （このメールには返信できません）
+  br
+  == yield
+  div
+    br
+    | --------------------------------------------------------------------------------
+    br
+    | 株式会社トライグループ
+    br
+    | TEL：0120-555-202
+    br
+    | MAIL：
+    = mail_to "try-it@trygroup.com"

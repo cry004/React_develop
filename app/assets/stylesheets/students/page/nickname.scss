@@ -1,0 +1,23 @@
+.page-nickname {
+  background-color: $color-bg-gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  .el-textbox {
+    margin-top: 40px;
+  }
+  .el-button {
+    margin-top: 40px;
+    &.is-red {
+      font-size: $font-size-10;
+    }
+  }
+  .annotation {
+    margin-top: 15px;
+    font-size: $font-size-20;
+    color: $color-text-gray;
+    line-height: 1.5;
+  }
+
+}

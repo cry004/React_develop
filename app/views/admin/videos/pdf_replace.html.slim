@@ -1,0 +1,55 @@
+- content_for :main_grid do
+  h1 PDFの差し替え
+  br
+  = admin_display_flash_message
+  br
+  table
+    thead
+      th 動画ファイル名
+      th 動画タイトル
+      - @pdf_types.each do |type|
+        th
+          = type
+    tbody
+      tr
+        td
+          = @video.filename
+        td
+          = @video.name
+        - if @video.schoolyear.first == 'c'
+          - if @video.subject.type == "regular"
+            td
+              = @video.lesson_text["url"].split("/").last
+            td
+              = @video.checktest.split("/").last
+            td
+              = @video.answer_url.split("/").last
+            td
+              = @video.notebook_url.split("/").last
+          - else
+            td
+              = @video.checktest.split("/").last
+            td
+              = @video.answer_url.split("/").last
+        - else
+          td
+            = @video.lesson_text["url"].split("/").last
+          td
+            = @video.notebook_url.split("/").last
+
+  br
+  br
+  h3 ＊既存のPDFと同じファイル名にしてください
+
+  = form_tag "/admin/videos/pdf_upload", multipart: true do
+    = label_tag :pdf, "PDF"
+    = select_tag :type, options_for_select(@select_option_for_pdf_types)
+    = file_field_tag :pdf
+    = hidden_field_tag :video_id, @video.id
+    br
+    br
+    = submit_tag "PDFアップロード"
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

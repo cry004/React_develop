@@ -1,0 +1,310 @@
+.page-about {
+  margin: 20px;
+  .heading {
+    font-size: $font-size-60;
+    color: $color-text-gray;
+  }
+  .menu {
+    margin-bottom: 30px;
+    width: $width-submenu;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    height: 44px;
+    line-height: 44px;
+    background-color: $color-white;
+    font-size: $font-size-30;
+    padding: 0 15px;
+  }
+  .container {
+    margin-top: 25px;
+  }
+
+
+  // ==========================
+  // mediaと合わすため以下のみBEM
+  // ==========================
+  .pointconfig__top {
+    &__description {
+      font-size: $font-size-60;
+      color: $color-text-gray;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .el-button {
+      margin: 20px auto 40px;
+    }
+  }
+  .pointconfig__introduction{
+    width: 920px;
+    margin: 0 auto;
+    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+   Meiryo, メイリオ, sans-serif;
+  }
+
+  /* about */
+  .pointconfig__introduction .pointconfig__about{
+    margin: 0 0 50px;
+  }
+  .pointconfig__about__title{
+    padding: 35px 0;
+    margin: 0 0 50px 0;
+    font-size: 38px;
+    color: white;
+    line-height: 1.2;
+    text-align: center;
+    background-image: image-url("common/main_bg.jpg");
+  }
+  .pointconfig__introduction .pointconfig__about__mov{
+    width: 850px;
+    margin: 0 auto;
+    border: 1px solid #dde8f1;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /* bt */
+  .pointconfig__introduction .pointconfig__bt{
+    margin: 0 0 120px;
+    text-align: center;
+  }
+  .pointconfig__introduction .pointconfig__bt a{
+    padding: 20px 150px;
+    font-size: 24px;
+    color: #fff;
+    background: #e7043f image-url("introduction/pointconfig_ic_link.png") no-repeat 95% center;
+    display: inline-block;
+  }
+  .pointconfig__introduction .pointconfig__bt a:hover{
+    background: #262672 image-url("introduction/pointconfig_ic_link.png") no-repeat 95% center;
+  }
+  .pointconfig__introduction .pointconfig__bt-bottom{
+    margin: 0 0 180px;
+  }
+
+  /* txt */
+  .pointconfig__introduction .pointconfig__txt{
+    margin: 0 0 50px;
+    text-align: center;
+    font-size: 24px;
+  }
+  .pointconfig__introduction .pointconfig__txt rt{
+    font-size: 10px;
+  }
+
+  /* service */
+  .pointconfig__introduction .pointconfig__service{
+    margin: 0 0 25px;
+    padding: 25px 40px 40px 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #ecfcff;
+  }
+  .pointconfig__introduction .pointconfig__serviceInner{
+    padding: 0 20px;
+  }
+  .pointconfig__introduction .pointconfig__service__title{
+    margin: 0 0 45px;
+    padding: 0 0 30px;
+    font-size: 38px;
+    border-bottom: 2px solid #196fb2;
+    text-align: center;
+  }
+  .pointconfig-ruby {
+    display: inline;
+    position: relative;
+    top: 0;
+    left: 0;
+    i {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      font-style: normal;
+      text-align: left;
+      width: 200%;
+      font-size: 50%;
+      line-height: 1;
+    }
+  }
+
+
+  /* service(waht) */
+  .pointconfig__introduction .pointconfig__service__what{
+    padding: 0 0 40px;
+    &__description {
+      float: left;
+      margin-right: 50px;
+    }
+    &__image {
+      float: left;
+    }
+  }
+  .pointconfig__introduction .pointconfig__service__what dt,
+  .pointconfig__introduction .pointconfig__service__flow dt,
+  .pointconfig__introduction .pointconfig__service__check dt{
+    margin: 0 0 15px;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .pointconfig__introduction .pointconfig__service__what dt span,
+  .pointconfig__introduction .pointconfig__service__flow dt span,
+  .pointconfig__introduction .pointconfig__service__check dt span{
+    margin: 0 15px 0 0;
+    color: #fff;
+    background: #333;
+    font-size: 22px;
+    font-weight: bold;
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    line-height: 34px;
+    text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .pointconfig__introduction .pointconfig__service__what dt rt,
+  .pointconfig__introduction .pointconfig__service__flow dt rt,
+  .pointconfig__introduction .pointconfig__service__check dt rt{
+    font-size: 10px;
+  }
+  .pointconfig__introduction .pointconfig__service__what dd{
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .pointconfig__introduction .pointconfig__service__what dd rt{
+    font-size: 8px;
+  }
+  .pointconfig__introduction .pointconfig__service__what dd span{
+    font-size: 12px;
+  }
+
+  /* service(flow) */
+  .pointconfig__introduction .pointconfig__service__flow{
+    padding: 0 0 40px;
+  }
+  .pointconfig__introduction .pointconfig__service__flow dd{
+    margin: 0;
+    padding: 30px 0;
+    text-align: center;
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  /* service(check) */
+  .pointconfig__introduction .pointconfig__service__check{
+    margin: 0 0 40px;
+  }
+  .pointconfig__introduction .pointconfig__service__check dd{
+    margin: 0;
+  }
+  .pointconfig__introduction .pointconfig__service__checkList{
+    font-size: 16px;
+    margin: 0 0 25px;
+  }
+  .pointconfig__introduction .pointconfig__service__checkList li{
+    padding: 0 0 5px;
+    line-height: 1.7;
+  }
+  .pointconfig__introduction .pointconfig__service__checkPoint{
+    padding: 15px 0;
+    background: #fff;
+    display: table;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .pointconfig__introduction .pointconfig__service__checkPoint li{
+    padding: 0 0 5px;
+    line-height: 1.7;
+  }
+  .pointconfig__introduction .pointconfig__service__checkPoint div{
+    display: table-cell;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .pointconfig__introduction .pointconfig__service__checkPoint_title{
+    text-align: center;
+    vertical-align: middle;
+    color: #ff6600;
+  }
+  .pointconfig__introduction .pointconfig__service__checkPoint_title span{
+    background: image-url("introduction/icon_exclamation.png") no-repeat left center;
+    padding: 3px 0 3px 30px;
+    font-weight: bold;
+  }
+  .pointconfig__introduction .pointconfig__service__checkPoint_list{
+    width: 70%;
+    padding: 5px 0 5px 50px;
+    border-left: 1px solid #ccc;
+  }
+
+  /* step */
+  .pointconfig__introduction .pointconfig__step{
+    margin: 0 0 65px;
+    padding: 35px 40px 60px 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #ecfef3;
+  }
+  .pointconfig__introduction .pointconfig__step__title{
+    margin: 0 0 45px;
+    padding: 0 0 30px;
+    font-size: 38px;
+    border-bottom: 2px solid #99cc00;
+    text-align: center;
+  }
+  .pointconfig__introduction .pointconfig__step__title rt{
+    font-size: 10px;
+  }
+  .pointconfig__introduction .pointconfig__step__flow{
+    margin: 0 0 30px;
+    padding: 10px 0 0 165px;
+    background: image-url("introduction/pointconfig_2step.png") no-repeat left top;
+  }
+  .pointconfig__introduction .pointconfig__step__flow dt{
+    margin: 0 0 15px;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .pointconfig__introduction .pointconfig__step__flow dt span{
+    margin: 0 15px 0 0;
+    padding: 2px 10px;
+    color: #fff;
+    background: #333;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .pointconfig__introduction .pointconfig__step__flow dd{
+    margin: 0;
+    padding: 0 0 40px;
+    line-height: 1.7;
+  }
+  .pointconfig__introduction .pointconfig__step__flow dd span{
+    font-size: 12px;
+  }
+  .pointconfig__introduction .pointconfig__step__stoper{
+    text-align: center;
+  }
+}

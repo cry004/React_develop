@@ -1,0 +1,81 @@
+.page-workbooks {
+  .top {
+    margin: 30px auto 0;
+    width: $width-min-content;
+    height: 594px;
+    background-size: 100% auto;
+    background-image: image-url('students/page/textbooks/top.png');
+  }
+  .about {
+    margin: 27px auto 0;
+    max-width: 900px;
+    min-height: 196px;
+    padding-right: 200px;
+    background-image: image-url('students/common/trysan.png');
+    background-size: 180px 196px;
+    background-position: right bottom;
+    background-repeat: no-repeat;   
+    &-text {
+      margin-top: 20px;
+      &-heading {
+        font-size: $font-size-60;
+      }
+      &-description {
+        margin-top: 20px;
+        font-size: $font-size-30;
+        line-height: 1.5;
+      }
+    }
+  }
+  .textbook {
+    margin: 40px 50px 0;
+    width: 180px;
+    color: $color-text-black;
+    &-image {
+      display: block;
+      background-color: black;
+      width: 100px;
+      height: 140px;
+      margin: 0 auto;
+      transition: opacity 0.15s ease;
+      &:hover {
+        opacity: .85;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    &-title {
+      margin-top: 20px;
+      font-size: $font-size-30;
+      text-align: center;
+    }
+  }
+  .amazon {
+    padding: 40px 15px;
+    background-color: $color-white;
+    width: $width-min-content;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    &-heading {
+      font-size: $font-size-60;
+    }
+    &-description {
+      margin-top: 20px;
+      font-size: $font-size-20;
+    }
+    &-subheading {
+      margin-top: 55px;
+      font-size: $font-size-60;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $color-border-gray;
+    }
+    &-textbooks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

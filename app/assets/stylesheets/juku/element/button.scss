@@ -1,0 +1,118 @@
+.el-button {
+  border: none;
+  width: 252px;
+  height: 55px;
+  line-height: 55px;
+  padding: 0;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: $blue-color;
+  background-repeat: no-repeat;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: lighten($blue-color, 7%);
+  }
+  
+  //----------color----------//
+  &.color-light {
+    background-color: $lightblue-color;
+    color: $blue-color;
+    &.color-active {
+      background-color: $blue-color;
+      color: #ffffff;
+      &:hover {
+        background-color: lighten($blue-color, 7%);
+      }
+    }
+    &:hover {
+      background-color: lighten($lightblue-color, 5%);
+    }
+  }
+  &.color-white {
+    border: 1px solid #c1c1c1;
+    color: #808080;
+    background-color: #ffffff;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &.color-disabled {
+    background-color: #D0D0D0 !important;
+    color: #fff !important;
+    border: none !important;
+  }
+  &.color-return {
+    background-color: #D0D0D0;
+    color: #ffffff;
+    border: none;
+    &:hover {
+      background-color: lighten(#D0D0D0, 5%);
+    }
+  }
+  &.color-pink {
+    background-color: $pink-color;
+    color: #fff;
+    &:hover {
+      background-color: lighten($pink-color, 5%);
+    }
+
+  }
+  &.color-setting {
+    background-color: #7ac82a;
+    &:hover {
+      background-color: lighten(#7ac82a, 5%);
+    }
+  }
+
+  //----------size----------//
+  &.size-large {
+    width: 330px;
+    height: 50px;
+    line-height: 50px;
+  }
+  &.size-small {
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+  }
+  &.size-mini {
+    width: 44px;
+    height: 27px;
+    line-height: 27px;
+    font-size: 10px; 
+  }
+  &.size-setting {
+    width: 126px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 12px;
+  }
+  &.size-modal {
+    width: 230px;
+  }  
+
+
+  //----------icon----------//
+  &.icon-print {
+    background-position: 16px 16px;
+    background-image: image-url("juku/icon-print.png");
+    padding-left: 15px;
+    &.color-disabled,
+    &.color-pink {
+      background-image: image-url("juku/icon-print-white.png");
+    }
+  }
+  &.icon-return {
+    background-image: image-url("juku/icon-return.png");
+    background-position: 10px 12px;
+  }
+
+}

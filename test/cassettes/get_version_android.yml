@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://s3-us-west-1.amazonaws.com/student.try-it.jp/android_version.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - lp7ZFPKNbFGegmMtBjhRYd/aQ47HN+tLU4BrdoUT5W9/rVtguwAyEJTywNoCsnRRsixXGcuGd+8=
+      X-Amz-Request-Id:
+      - EAFE268B0E33215A
+      Date:
+      - Tue, 05 Jul 2016 03:41:19 GMT
+      Last-Modified:
+      - Fri, 17 Jun 2016 03:06:37 GMT
+      Etag:
+      - '"c9e47dbb0e1927076ed7b2e1ec157be7"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '6'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '1.0.0
+
+'
+    http_version: 
+  recorded_at: Tue, 05 Jul 2016 03:41:18 GMT
+recorded_with: VCR 3.0.1

@@ -1,0 +1,25 @@
+- if @admin_user.role == "admin"
+  - user_static_instance = UserStatic.instance
+  h2
+    | 各種データ(*10分ごとに更新されます。)
+  h3 【FIST会員】
+  p
+    | 保護者: 
+    = user_static_instance.fist_parent_count
+  p
+    | 生徒: 
+    = user_static_instance.fist_student_count
+  p
+    | クレジットカード登録: 
+    = user_static_instance.fist_settings_creditcard_parent_count
+
+  h3【のみ会員】
+  p
+    | 保護者: 
+    = user_static_instance.tryit_parent_count
+  p
+    | 生徒: 
+    = user_static_instance.tryit_student_count
+  p
+    | クレジットカード登録: 
+    = user_static_instance.tryit_settings_creditcard_parent_count

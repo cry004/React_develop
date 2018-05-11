@@ -1,0 +1,8 @@
+.Footer {
+  width: calc(100% - 40px);
+  padding: 10px 20px; 
+  color: $blue-color;
+  &__copyright {
+    text-align: right;
+  }
+}

@@ -1,0 +1,38 @@
+- page_title = @resource.model_name.human.pluralize
+- admin_title(page_title)
+- @resource_actions = [["", {:action=>""}]]
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  .csv_download
+    p
+      | 【以前の形式】前日の8時から本日の9:00までの分からないのCSVをダウンロードする
+      = link_to 'CSVダウンロード', { controller: "admin/incomprehensibles", action: :csv_download, format: :csv }
+  .csv_download
+    p
+      | CSVダウンロード
+    = form_tag controller: "/admin/incomprehensibles", action: "study_log_csv_download", format: :csv do
+      = label_tag "日付"
+      = select_tag "date", options_for_select({"本日" => 0, "1日前" => 1, "2日前" => 2, "3日前" => 3, "4日前" => 4, "5日前" => 5, "6日前" => 6, "7日前" => 7})
+      = submit_tag "CSVをダウンロードする", class: "csv_download_button"
+    p
+      | * 1週間前のデータまでダウンロードすることができます。
+    p
+      | * 前日05:00から翌05:00に記録された、FIST会員によるビデオ視聴およびわからないのデータです
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions { build_list(Question, fields, @items) }
+    - else
+      = build_list(@resource, fields, @items)
+    = paginate @items
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+= render "admin/shared/user_profile"
+.grid_2
+  = build_sidebar
+.grid_10
+  = yield :main_grid

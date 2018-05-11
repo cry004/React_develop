@@ -1,0 +1,5 @@
+ul
+  li
+    = admin_user.to_label
+  li
+    = link_to Typus::I18n.t("Sign out"), admin_sign_out_path, :method => :delete

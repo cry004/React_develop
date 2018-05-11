@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teacherapp.trygroup.co.jp/cramschooladmin/dev/SIT_LIST.aspx?TMP_CD=3211
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/html; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 07 Feb 2017 03:32:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":{"periods":[{"end_time":"16:40","id":"04","start_time":"15:40"},{"end_time":"17:50","id":"05","start_time":"16:50"},{"end_time":"19:00","id":"06","start_time":"18:00"},{"end_time":"20:10","id":"07","start_time":"19:10"},{"end_time":"21:20","id":"08","start_time":"20:20"}],"students":[{"SIT_CD":"32110000001","periods":[{"agreements":[{"TMP_CD":"3211","agreement_id":"32110000001-123-1","day_of_the_week":"04","subject_ids":["201"]}],"period_id":"06"}]}]},"meta":{"code":200,"error_message":""}}'
+    http_version: 
+  recorded_at: Tue, 07 Feb 2017 03:32:48 GMT
+recorded_with: VCR 3.0.1

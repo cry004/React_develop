@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://monitoring.ap-northeast-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=PutMetricData&MetricData.member.1.Dimensions.member.1.Name=By%20Service%20Name&MetricData.member.1.Dimensions.member.1.Value=Millvi&MetricData.member.1.MetricName=5XXError&MetricData.member.1.StatisticValues.Maximum=1.0&MetricData.member.1.StatisticValues.Minimum=1.0&MetricData.member.1.StatisticValues.SampleCount=1.0&MetricData.member.1.StatisticValues.Sum=1.0&MetricData.member.1.Unit=Count&Namespace=ExternalService&Version=2010-08-01
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.0.47 ruby/2.3.1 x86_64-darwin15
+      X-Amz-Date:
+      - 20161213T082448Z
+      X-Amz-Content-Sha256:
+      - 87bcbc4562cf5d7804c1b0ed44e6c3adf873b68becd8aa104c15c1e54094aa46
+      Content-Length:
+      - '446'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 9c897b4e-c10d-11e6-89fb-717439b36560
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '212'
+      Date:
+      - Tue, 13 Dec 2016 08:24:48 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <PutMetricDataResponse xmlns="http://monitoring.amazonaws.com/doc/2010-08-01/">
+          <ResponseMetadata>
+            <RequestId>9c897b4e-c10d-11e6-89fb-717439b36560</RequestId>
+          </ResponseMetadata>
+        </PutMetricDataResponse>
+    http_version:
+  recorded_at: Tue, 13 Dec 2016 08:24:48 GMT
+recorded_with: VCR 3.0.1

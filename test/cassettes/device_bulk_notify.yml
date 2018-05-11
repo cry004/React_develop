@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sns.ap-northeast-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=Publish&Message=%22%E3%83%88%E3%83%A9%E3%82%A4%E3%81%95%E3%82%93%E3%81%8B%E3%82%89%E3%81%AE%E3%81%94%E9%80%A3%E7%B5%A1%22&MessageStructure=json&TargetArn=arn%3Aaws%3Asns%3Aap-northeast-1%3A414067260705%3Awhole_student_notification_topic_develop&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.0.47 ruby/2.3.1 x86_64-darwin15
+      X-Amz-Date:
+      - 20170522T034611Z
+      X-Amz-Content-Sha256:
+      - 332c004e5c655e8af073135aa2d2e81737569d284b22403bb31e389f8a47c5b0
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJIIQTKHQUSLUS7HQ/20170522/ap-northeast-1/sns/aws4_request,
+        SignedHeaders=content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=0ca136c8c31dc436bef62d951d32b5bd4342287d41407d8f7fc844104e04c0f8
+      Content-Length:
+      - '270'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Amzn-Requestid:
+      - 7f975d98-5a12-5783-bd6f-0c043b56e394
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '306'
+      Date:
+      - Mon, 22 May 2017 03:46:12 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        <ErrorResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <Error>
+            <Type>Sender</Type>
+            <Code>InvalidParameter</Code>
+            <Message>Invalid parameter: Message Structure - Failed to parse JSON</Message>
+          </Error>
+          <RequestId>7f975d98-5a12-5783-bd6f-0c043b56e394</RequestId>
+        </ErrorResponse>
+    http_version: 
+  recorded_at: Mon, 22 May 2017 03:46:13 GMT
+recorded_with: VCR 3.0.1

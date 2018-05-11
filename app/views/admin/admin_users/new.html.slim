@@ -1,0 +1,15 @@
+- page_title = Typus::I18n.t("Add %{resource}", :resource => @resource.model_name.human)
+-   admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  = render 'new'
+  - locals = { :options => params.dup.cleanup.merge(:action => 'create') }
+  = render '/admin/admin_users/form', locals
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

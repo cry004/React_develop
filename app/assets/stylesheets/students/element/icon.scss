@@ -1,0 +1,31 @@
+.el-icon {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  @for $i from 0 through 19 {
+    &.is-#{$i} {
+      background-image: image-url('students/profile/student-#{$i}.png');
+    }
+  }
+  &.is-teacher {
+    background-image: image-url('students/profile/teacher.png');
+  }
+  &.is-try {
+    background-image: image-url('students/profile/try.png');
+  }
+  &.size-small {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.el-icon-classroom {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  @for $i from 0 through 11 {
+    &.is-#{$i} {
+      background-image: image-url('students/classroom/#{$i}.png');
+    }
+  }
+}

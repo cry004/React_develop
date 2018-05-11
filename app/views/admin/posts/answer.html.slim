@@ -1,0 +1,67 @@
+- content_for :main_grid do
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @post.question }
+  - if @post.question.can_answer? && @post.question.answerer_id == @admin_user.id
+    - image_url = @post.try(:resource_url) || ""
+    - style = image_url.present? ? "display:inline" : "display:none"
+
+    h2 回答中
+    = button_to "回答をやめる", "/admin/questions/deassign/#{@post.question.id}", data: {confirm: "回答をやめてもよろしいでしょうか？"}, class: "typus__button__cancel"
+    - if @admin_user.role == "admin" || @admin_user.role == "executive_answerer"
+      = button_to "質問を差し戻す", "/admin/questions/force_reject_edit/#{@post.question.id}", class: "typus__button__cancel"
+
+    h2 回答の画像ファイルをアップ
+    = form_tag({ controller: "admin/posts", action: "update", id: @post.id }, enctype: "multipart/form-data")
+      = file_field_tag "post[upload_file]", id: "upload_file"
+      p 画像をクリックすると拡大表示されます
+      div#typus_answer_image
+        p 回答解説を書いた画像をアップロード
+      div.imagePreview
+        a class="img_popup" href="#{image_url}"
+          img[src="#{image_url}" id="preview" style="#{style}"]
+      div.typus_teacher_rule
+        h3
+          | 添削指導の基本ルール
+        .typus_teacher_rule_content
+          ul
+            li A4用紙１枚（全体）を使って解説をしてください
+            li 質問の要点を解説の冒頭に記載してください
+            li 答えを黒で書き、考え方のポイントを赤（または青）で書いてください
+        .typus_coution_wording
+          h3 * 上記の基本ルールが守られていない場合、ポイントの対象となりませんので、くれぐれもご注意ください。
+
+
+      = submit_tag "回答を送信する", class: "submit_button", name: "draft", data: {confirm: "回答を送信してもよろしいでしょうか？"}, class: "typus__button__ok"
+.typus__main__content__show
+  = yield :main_grid
+
+  javascript:
+    // 選択された画像ファイルのプレビュー表示
+    $(function() {
+      $('#upload_file').change(
+        function() {
+          if ( !this.files.length ) {
+            return;
+          }
+          var file = $(this).prop('files')[0];
+          var fr = new FileReader();
+          fr.onload = function() {
+            $("#typus_answer_image").remove();
+            $('#preview').attr('src', fr.result ).css('display','inline');
+          }
+          fr.readAsDataURL(file);
+        }
+      );
+      // 画像の拡大表示
+      $('body').prepend('<div class="overlay"></div>');
+      $('a.img_popup').click(function() {
+        var left = ($(window).width() / 2) + $(window).scrollLeft() - ($(this).attr('width') / 2);
+        var top = ($(window).height() / 2) + $(window).scrollTop() - ($(this).attr('height') / 2);
+        $('div.overlay').css('height', $(document).height());
+        $('div.overlay').empty().append('<img src="' + $('#preview').attr('src') + '" />').css({display: 'block'});
+        $('div.overlay img').css({left: left, top: top, opacity: '1'});
+        return false;
+      });
+      $('div.overlay').click(function() {
+        $('div.overlay').hide();
+      });
+    });

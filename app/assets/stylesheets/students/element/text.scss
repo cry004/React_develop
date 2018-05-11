@@ -1,0 +1,9 @@
+.el-text-nocontent {
+  margin: 150px auto;
+  text-align: center;
+  font-size: $font-size-60;
+  color: $color-text-gray;
+  &.no-header {
+    margin-top: 250px;
+  }
+}

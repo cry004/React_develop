@@ -1,0 +1,26 @@
+.SystemMenu {
+  position: fixed;
+  width: 235px;
+  height: 100%;
+  border-right: 1px solid #DDD;
+  vertical-align: top;
+  background: #fff;
+  box-sizing: border-box;
+  &__list {
+    &-item {
+      a {
+        display: block;
+        width: calc(100% - 40px);
+        padding: 10px 20px;
+        text-decoration: none;
+        color: $lightblue-color;
+        background-color: #FFF;
+        font-weight: bold;
+        &.active {
+          color: $blue-color;
+          background-color: $lightblue-color;
+        }
+      }
+    }
+  }
+}

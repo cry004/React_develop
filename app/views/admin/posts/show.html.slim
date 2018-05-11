@@ -1,0 +1,18 @@
+- content_for :main_grid do
+  = link_to "一覧へ戻る", "/admin/questions/index"
+  - if @post.state == "rejected"
+    .refused_reason
+      h2 不採用理由
+      p
+        = @post.try(:comment_from_executive_answerer)
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @post.question }
+
+  .typus__question__answer
+    h2 回答内容
+    .typus__question__answer_state
+      p
+        = answered_state(@post.state)
+    = image_tag @post.photo.try(:resource_url), class: "typus_image"
+
+.typus__main__content__show
+  = yield :main_grid

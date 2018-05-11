@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sns.ap-northeast-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreatePlatformEndpoint&PlatformApplicationArn=arn%3Aaws%3Asns%3Aap-northeast-1%3A414067260705%3Aapp%2FAPNS%2Ftry_it_student_ios_develop_adhoc&Token=b15cb71b531bd2e5619f615d608eb39754dd14dc8e7a309b960d17ade9841b6a&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.0.47 ruby/2.3.1 x86_64-darwin15
+      X-Amz-Date:
+      - 20170522T024537Z
+      X-Amz-Content-Sha256:
+      - c6be134e8c91d10b6218488812d3217ea7b3fcabc42f36b7d5f1bfd67461805f
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJIIQTKHQUSLUS7HQ/20170522/ap-northeast-1/sns/aws4_request,
+        SignedHeaders=content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=b2479a97b63f5722465071604682f0ae5b2fca0d3f8995e318bdd70c847c0981
+      Content-Length:
+      - '238'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 83063eb5-3ff6-5525-b8f5-6f296ce71637
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '445'
+      Date:
+      - Mon, 22 May 2017 02:45:36 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <CreatePlatformEndpointResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <CreatePlatformEndpointResult>
+            <EndpointArn>arn:aws:sns:ap-northeast-1:414067260705:endpoint/APNS/try_it_student_ios_develop_adhoc/8c7fc675-62ef-3f52-9d30-133d4fe747f7</EndpointArn>
+          </CreatePlatformEndpointResult>
+          <ResponseMetadata>
+            <RequestId>83063eb5-3ff6-5525-b8f5-6f296ce71637</RequestId>
+          </ResponseMetadata>
+        </CreatePlatformEndpointResponse>
+    http_version: 
+  recorded_at: Mon, 22 May 2017 02:45:37 GMT
+- request:
+    method: post
+    uri: https://sns.ap-northeast-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=Subscribe&Endpoint=arn%3Aaws%3Asns%3Aap-northeast-1%3A414067260705%3Aendpoint%2FAPNS%2Ftry_it_student_ios_develop_adhoc%2F8c7fc675-62ef-3f52-9d30-133d4fe747f7&Protocol=application&TopicArn=arn%3Aaws%3Asns%3Aap-northeast-1%3A414067260705%3Awhole_student_notification_topic_develop&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.0.47 ruby/2.3.1 x86_64-darwin15
+      X-Amz-Date:
+      - 20170522T024537Z
+      X-Amz-Content-Sha256:
+      - e94f849bde4d2ec75e14d78ea145257c8051da1ed80527ef54f93f40c5bf987b
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJIIQTKHQUSLUS7HQ/20170522/ap-northeast-1/sns/aws4_request,
+        SignedHeaders=content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=13ae532bef0ce67f9ec3849acb5290d76e7adec370d5a85d55902376e7b4925e
+      Content-Length:
+      - '305'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 794ee8a6-62bd-5445-a3b8-b93a31ac3b55
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '395'
+      Date:
+      - Mon, 22 May 2017 02:45:37 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <SubscribeResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <SubscribeResult>
+            <SubscriptionArn>arn:aws:sns:ap-northeast-1:414067260705:whole_student_notification_topic_develop:8aedc02f-99f4-4eaa-90b4-8a0b13d8a2f5</SubscriptionArn>
+          </SubscribeResult>
+          <ResponseMetadata>
+            <RequestId>794ee8a6-62bd-5445-a3b8-b93a31ac3b55</RequestId>
+          </ResponseMetadata>
+        </SubscribeResponse>
+    http_version: 
+  recorded_at: Mon, 22 May 2017 02:45:37 GMT
+- request:
+    method: post
+    uri: https://sns.ap-northeast-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=Subscribe&Endpoint=arn%3Aaws%3Asns%3Aap-northeast-1%3A414067260705%3Aendpoint%2FAPNS%2Ftry_it_student_ios_develop_adhoc%2F8c7fc675-62ef-3f52-9d30-133d4fe747f7&Protocol=application&TopicArn=arn%3Aaws%3Asns%3Aap-northeast-1%3A414067260705%3Awhole_student_notification_topic_develop&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.0.47 ruby/2.3.1 x86_64-darwin15
+      X-Amz-Date:
+      - 20170522T024537Z
+      X-Amz-Content-Sha256:
+      - e94f849bde4d2ec75e14d78ea145257c8051da1ed80527ef54f93f40c5bf987b
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJIIQTKHQUSLUS7HQ/20170522/ap-northeast-1/sns/aws4_request,
+        SignedHeaders=content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=13ae532bef0ce67f9ec3849acb5290d76e7adec370d5a85d55902376e7b4925e
+      Content-Length:
+      - '305'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 4176b84d-9238-5ff8-a314-e9d1c1297242
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '395'
+      Date:
+      - Mon, 22 May 2017 02:45:37 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <SubscribeResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <SubscribeResult>
+            <SubscriptionArn>arn:aws:sns:ap-northeast-1:414067260705:whole_student_notification_topic_develop:8aedc02f-99f4-4eaa-90b4-8a0b13d8a2f5</SubscriptionArn>
+          </SubscribeResult>
+          <ResponseMetadata>
+            <RequestId>4176b84d-9238-5ff8-a314-e9d1c1297242</RequestId>
+          </ResponseMetadata>
+        </SubscribeResponse>
+    http_version: 
+  recorded_at: Mon, 22 May 2017 02:45:37 GMT
+recorded_with: VCR 3.0.1

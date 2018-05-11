@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teacherapp.trygroup.co.jp/cramschooladmin/dev/BOX_LIST.aspx?TMP_CD=3211&end_date=20160601&start_date=20160601
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/html; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 23 Jun 2016 10:58:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":{"items":[{"date":"20160601","periods":[{"boxes":[{"SIT_CD":"32110000001","TMP_CD":"3211","agreement_id":"1517","box_id":"12553","day_of_the_week":"04","subject_id":"207"}],"period_id":"06"},{"boxes":[{"SIT_CD":"32110000001","TMP_CD":"3211","agreement_id":"2063","box_id":"17467","day_of_the_week":"04","subject_id":"208"}],"period_id":"07"}]}],"periods":[{"end_time":"19:00","id":"06","start_time":"18:00"},{"end_time":"20:10","id":"07","start_time":"19:10"}]},"meta":{"code":200,"error_message":""}}'
+    http_version: 
+  recorded_at: Thu, 23 Jun 2016 10:58:58 GMT
+recorded_with: VCR 3.0.1

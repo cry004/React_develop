@@ -1,0 +1,35 @@
+ul.predefined_filters
+  / 検閲者のタブ一覧
+  - if @admin_user.role == "gatekeeper"
+    li#index_of_open.typus__left_list
+      = link_to "未検閲一覧", { :action => :index_of_open }, { id: :index_of_open }
+    li#index_of_open.typus__left_list
+      = link_to "保留一覧", { :action => :index_of_pending }, { id: :index_of_pending }
+    li#history_for_examined.typus__left_list
+      = link_to "検閲履歴", { :action => :history_for_examined }, { id: :history_for_examined }
+  / 承認者のタブ一覧
+  - elsif @admin_user.role == "executive_answerer" || @admin_user.role == "admin"
+    li#index_of_open.typus__left_list
+      = link_to "未検閲一覧", { :action => :index_of_open }, { id: :index_of_open }
+    li#index_of_open.typus__left_list
+      = link_to "保留一覧", { :action => :index_of_pending }, { id: :index_of_pending }
+    li#index_of_accepted.typus__left_list
+      = link_to "未回答一覧", { :action => :index_of_accepted }, { id: :index_of_accepted }
+    li#index_of_auto_assign.typus__left_list
+      = link_to "昨日以前に作られた未回答質問一覧", { :action => :index_of_auto_assign }, { id: :index_of_auto_assign }
+    li#index_of_answered_unchecked.typus__left_list
+      = link_to "未承認一覧", { :action => :index_of_answered_unchecked }, { id: :index_of_answered_unchecked }
+    li#history_for_examined.typus__right_list
+      = link_to "検閲履歴", { :action => :history_for_examined }, { id: :history_for_examined }
+    li#history_for_answered.typus__right_list
+      = link_to "回答履歴", { :action => :history_for_answered }, { id: :history_for_answered }
+    li#histroy_for_answered_checked.typus__right_list
+      = link_to "承認履歴", { :action => :histroy_for_answered_checked }, { id: :histroy_for_answered_checked }
+  / 回答者のタブ一覧
+  - elsif @admin_user.role == "answerer"
+    li#index_of_accepted.typus__left_list
+      = link_to "未回答一覧", { :action => :index_of_accepted }, { id: :index_of_accepted }
+    li#history_for_answered.typus__left_list
+      = link_to "回答履歴", { :action => :history_for_answered }, { id: :history_for_answered }
+
+

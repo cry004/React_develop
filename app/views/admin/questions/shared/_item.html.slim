@@ -1,0 +1,71 @@
+- video_url = question_item.video ? Millvi.get_video_url(question_item.video.id_contents, request.user_agent, :mp4_video) : nil
+- incomprehensible_position = question_item.position
+
+= admin_display_flash_message
+h2 質問
+.typus__question__answer
+  .typus__question__answer_state
+    p
+      = exmined_state(question_item.state)
+
+- if @admin_user.role != "answerer" && question_item.state == "pending"
+  - pending_reason = question_item.posts.where(postable_type: "Student").first.pending_reason_from_gatekeeper
+  h3 保留理由
+  .typus_pending_reason
+    = pending_reason.present? ? pending_reason : "なし"
+
+.question_container
+  table
+    thead
+      tr
+        th 質問ID
+        th 生徒ID
+        th 生徒の学年
+        th 学校種別
+        th 科目
+        th ビデオの科目
+    tbody
+      tr
+        td
+          = question_item.id
+        td
+          = question_item.student.sit_cd
+        td
+          = question_item.student_schoolyear
+        td
+          = question_item.school_type_name
+        td
+          = question_item.subject_name
+        td
+          = question_item.video_subject_name
+  .typus_question_content_header
+    | 質問内容
+  .typus_question_content
+    = question_item.posts.find_by(postable_type: "Student").body
+  dl
+    - if video_url
+      dt 動画
+      dd
+        = video_tag(video_url, :controls => true, id: "typus__video")
+        br
+        = button_tag "わからないを押された箇所から再生", id: "typus__skip_button"
+    - else
+      dt 画像
+      dd
+        = image_tag question_item.posts.find_by(postable_type: "Student").photo.try(:resource_url), class: "typus_image"
+    = link_to "一覧へ戻る", "/admin/questions/index"
+
+- if question_item.try(:state) == "refused"
+  h3 差し戻し理由
+  div
+    = question_item.posts.where(postable_type: "AdminUser", state: ["accepted_unread", "accepted_read"], auto_reply: false).last.body
+
+javascript:
+  $(function() {
+    $("#typus__skip_button").click(function(){
+      var video = $("#typus__video").get(0);
+      var currentTime = #{incomprehensible_position}
+      video.currentTime = currentTime ? currentTime : 0;
+      video.play();
+    });
+  });

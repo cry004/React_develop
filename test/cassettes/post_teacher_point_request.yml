@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cs.trygroup.co.jp/cstest/home.pc?cs_param=sso&im_password=Mw_bqA5K&im_user=S50089000101&tryg2=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - No-Cache
+      Pragma:
+      - No-Cache
+      Content-Type:
+      - text/html; charset=Windows-31J
+      Server:
+      - Microsoft-IIS/7.5
+      Set-Cookie:
+      - JSESSIONID=abcLwaVS-qOLF9pDBhulv; path=/; secure; HttpOnly
+      - jp.co.intra_mart.session.cookie=|user|pc|ja|Windows-31J|home|S50089000101|blue|/cstest/home.pc|;
+        secure; HttpOnly
+      Date:
+      - Fri, 12 Feb 2016 06:14:23 GMT
+      Content-Length:
+      - '209'
+    body:
+      encoding: UTF-8
+      string: "\r\n<HTML>\r\n<BODY onLoad=\"document.forms[0].submit();\">\r\n\t<form
+        name=\"page_form\" action=\"/_-A-_/cstest/trycs/jsp/common/sso.jsp;jsessionid=abcLwaVS-qOLF9pDBhulv\"
+        method=\"GET\">\r\n\t\t\r\n\t</form>\r\n</BODY>\r\n</HTML>\r\n\r\n"
+    http_version: 
+  recorded_at: Fri, 12 Feb 2016 06:14:27 GMT
+- request:
+    method: post
+    uri: https://cs.trygroup.co.jp/cstest/conf.cs_R01-R010007.service;jsessionid=abcLwaVS-qOLF9pDBhulv;tryg2
+    body:
+      encoding: UTF-8
+      string: '{"KYS_CD":"","SHKKN_YTI_MNY":100}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      Server:
+      - Microsoft-IIS/7.5
+      Date:
+      - Fri, 12 Feb 2016 06:14:23 GMT
+      Content-Length:
+      - '147'
+    body:
+      encoding: UTF-8
+      string: "\r\n\r\n{\r\n  \"meta\": {\r\n    \"code\": 201\r\n    \r\n  },\r\n
+        \ \"data\": {\r\n    \r\n  \t\"SHKKN_YTI_YMD\" : \"20160325\"\r\n  \t,\"SHKKN_CD\"
+        : \"00015757707\"\r\n    \r\n  }\r\n}\r\n"
+    http_version: 
+  recorded_at: Fri, 12 Feb 2016 06:14:27 GMT
+recorded_with: VCR 3.0.1

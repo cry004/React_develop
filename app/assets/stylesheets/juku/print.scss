@@ -1,0 +1,267 @@
+.app {
+  &  > * {
+    display: none;
+  }
+  & > .Report {
+    display: block;
+  }
+
+  & > .Report {
+    &  >  * {
+      display: none;
+    }
+    & > .Report__container {
+      display: block;
+      margin-top: 0;
+      opacity: 1!important;
+      &  > .Curriculums__header {
+        display: none;
+      }
+      & > .Report__contents {
+        display: block;
+        width: 171mm;
+        margin: 0 auto;
+        min-width: 171mm;
+        border: none;
+        padding: 0;
+        font-size: 1.2rem;
+        @page {
+          size: A4;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.icon-review-on,
+.icon-review-off,
+.icon-pass-on,
+.icon-pass-off {
+  &.is-print {
+    display: inline-block;
+  }
+  &.is-pc {
+    display: none;
+  }
+}
+
+.Report__header {
+  .name {
+    font-size: 1.4rem;
+    margin: 10px 0 3px;
+  }
+  .info {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+  }
+  .sign .space, .sign .space div {
+    font-size: 1rem;
+    width: 70px;
+  }
+  .Report__header .sign .space__title {
+    font-size: .8rem;
+  }
+  .avatar {
+    -webkit-filter: grayscale(100%);
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+  }
+}
+
+.Report__header-left, .Report__header-right {
+  padding: 5px 0 0;
+}
+.Report__header .sign .space {
+  height: 103px;
+}
+.Report__title {
+  -webkit-print-color-adjust: exact;
+  font-size: 1.4rem;
+  padding: 5px 0;
+  background-color: #000;
+}
+
+.Report__subtitle {
+  border-color :#000;
+  color: #000;
+  font-size: 1.6rem;
+  margin: 0 0 5px;
+  padding: 0 0 3px;
+  &.enavi {
+    margin-top: 15px;
+  }
+}
+
+.Report__subsubject {
+  color: #000;
+  font-size: 1.4rem;
+}
+
+.Report__status {
+  padding: 5px 20px;
+  border-color: #333;
+}
+
+.Report__status-subject {
+  color: #000;
+  font-size: 1.5rem;
+  width: 30mm;
+  padding-top: 10px;
+}
+
+.Report__status-process {
+  width: 141mm;
+}
+
+.Report__status-process .num, .Report__status-process .num .big {
+  color: #000;
+}
+
+.curriculum_target-text {
+  font-size: 1.0rem;
+  width: 120mm;
+}
+
+.curriculum_status-per {
+  color: #000;
+}
+
+.curriculum_complete .complete {
+  color: #000;
+}
+
+.curriculum_label {
+  font-size: 1.0rem;
+  margin-right: 10px;
+  color: #fff;
+  background-color: #000;
+  font-weight: bold;
+  -webkit-print-color-adjust: exact;
+}
+
+.curriculum_status-bar-content {
+  -webkit-print-color-adjust: exact;
+  background-color: #000;
+}
+
+.Report__subject {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.Report__subject.pink {
+  -webkit-print-color-adjust: exact;
+  font-size: 1.4rem;
+  padding: 5px 10px;
+  background-color: #666;
+}
+
+.Report__curriculums-contentsitem {
+  padding: 5px 0;
+}
+
+.Report__curriculums-contents .enavi-title {
+  color: #000;
+  font-size: 1.4rem;
+}
+
+.Report__curriculums-headeritem {
+  font-size: 1.0rem;
+}
+
+.Report__curriculums-contentsitem.title {
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+.Report__curriculums-contentsitem.comment {
+  padding-left: 10px;
+}
+
+.Report__curriculums-contentsitem.comment p {
+  font-size: 1.0rem;
+}
+
+.Report__status-bar .bar .bar-content {
+  -webkit-print-color-adjust: exact;
+  background-color: #000;
+}
+
+.Report__table-title {
+  color: #000;
+  font-size: 1.2rem;
+  padding: 0 0 5px 0;
+}
+.Report__table {
+  height: 648px;
+  margin-bottom: 15px;
+  &-cell {
+    height: 108px;
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        top: #{ ($i - 1) % 6 * 108}px;
+      }
+    }
+  }
+}
+.Report__table-unit-title {
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+.Report__table-curriculum-setting {
+  top: 34px;
+  th {
+    font-size: .8rem;
+    line-height: 1.8rem;
+  }
+  th[colspan="2"],&:nth-of-type(2) th {
+    font-size: 1rem;
+  }
+  &:nth-of-type(2) th {
+    height: 3.6em;
+  }
+}
+.Report__table-unit-subtitle {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.Report table.enavi {
+  border-color: #333;
+}
+
+.Report table.enavi th {
+  width: 50%;
+  border-color: #333;
+}
+.Report table.enavi th:first-child {
+  font-size: 1rem;
+  padding-top: 2px;
+}
+.Report table.enavi th:last-child {
+  font-size: 1rem;
+  padding-top: 2px;
+}
+.Report table.enavi td {
+  border-color: #333;
+  div {
+    height: 15px;
+    font-size: .8rem;
+    width: 100%;
+  }
+}
+
+.Report__subtitle .note, .Report .enavi-title .note {
+  font-size: 1.0rem;
+}
+
+.Report__container,
+.Loading .Report__container {
+  opacity: 1!important;
+}
+
+.Loading {
+  display: none;
+}

@@ -1,0 +1,12 @@
+- content_for :main_grid do
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @item }
+  div.examing
+    h3 質問の差し戻し
+    = form_tag "/admin/questions/force_reject"
+      = hidden_field_tag :id, @item.id
+      = select_tag :refuse_reason_select, options_for_select(Settings.question_refuse_reason), placeholder: "差し戻しの理由を選択してください", class: "typus__refuse_reason_select"
+      = text_area :refuse_reason_text, nil, placeholder: "自由記述欄", class: "typus__refuse_reason_text"
+      = submit_tag "差し戻す", data: {confirm: "差し戻してもよろしいでしょうか？"}, class: "typus__button__cancel"
+
+.typus__main__content__show
+  = yield :main_grid

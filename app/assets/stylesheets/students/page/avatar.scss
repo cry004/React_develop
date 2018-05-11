@@ -1,0 +1,59 @@
+.page-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $color-bg-gray;
+  padding: 10px;
+  .el-heading {
+    max-width: 980px;
+    width: auto;
+    margin-bottom: 20px;
+  }
+  .el-button {
+    margin: 40px auto 0;
+  }
+  
+  .icons {
+    max-width: 980px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .icon {
+    position: relative;
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 20px 8px 0;
+    input {
+      appearance: none;
+      display: none;
+      &:checked {
+        + label {
+          &:after {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 0;
+            width: 76px;
+            height: 76px;
+            background-size: cover;
+            background-image: image-url('students/profile/selected.png');
+          }
+        }
+      }
+    }
+    label {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      @for $i from 0 through 19 {
+        &.is-#{$i} {
+          background-image: image-url('students/profile/student-#{$i}.png');
+        }
+      }
+    }
+  }
+}

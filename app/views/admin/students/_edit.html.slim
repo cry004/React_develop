@@ -1,0 +1,14 @@
+- unless @item.current_member_type == 'tester'
+  = form_tag(controller: '/admin/students', action: 'change_member_type') do
+    = hidden_field_tag(:id, @item.id)
+    = hidden_field_tag(:type, 'tester')
+    = submit_tag('会員種別をtesterにする',
+                 data: { confirm: 'この生徒をtesterにしてもよろしいでしょうか？' },
+                 class: 'typus__button__ok')
+- else
+  = form_tag(controller: '/admin/students', action: 'change_member_type') do
+    = hidden_field_tag(:id, @item.id)
+    = hidden_field_tag(:type, 'cancel')
+    = submit_tag('会員種別をtesterから元に戻す。',
+                 data: { confirm: 'この生徒の会員種別を元に戻してもよろしいでしょうか？' },
+                 class: 'typus__button__cancel')

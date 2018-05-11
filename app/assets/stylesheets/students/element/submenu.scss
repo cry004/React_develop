@@ -1,0 +1,47 @@
+.el-submenu {
+  width: $width-submenu;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  &.is-teacher {
+    max-height: 50vh;
+    overflow-y: scroll;
+    li {
+      height: 64px;
+      .el-submenu-date {
+        margin-top: -18px;
+        line-height: 1;
+        font-size: $font-size-10;
+        color: $color-text-gray;
+      }
+    }
+  }
+  &-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 100%;
+  }
+  li {
+    position: relative;
+    height: 44px;
+    line-height: 44px;
+    background-color: $color-white;
+    cursor: pointer;
+    font-size: $font-size-30;
+    padding: 0 30px;
+    &:hover {
+      background-color: $color-bg-light-gray; 
+    }
+    &.is-unread {
+      &:before {
+        position: absolute;
+        left: 10px;
+        content: "●";
+        color: $color-blue;
+        font-size: $font-size-50;
+      }
+    }
+  } 
+}

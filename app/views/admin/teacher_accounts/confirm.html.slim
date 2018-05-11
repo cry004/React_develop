@@ -1,0 +1,33 @@
+.panel.panel-default
+  .panel-heading
+    h4.account_title トライ 添削指導サービス 指導者登録
+  .panel-body
+    = form_for @admin_user, builder: WithErrorFormBuilder, url: admin_teacher_accounts_path do |f|
+      .form-group
+        = f.label :email
+        span #{@admin_user.email}
+        = f.hidden_field :email
+      .form-group
+        = f.label :last_name
+        span #{@admin_user.last_name}
+        = f.hidden_field :last_name
+      .form-group
+        = f.label :first_name
+        span #{@admin_user.first_name}
+        = f.hidden_field :first_name
+      .form-group
+        = f.label :last_name_kana
+        span #{@admin_user.last_name_kana}
+        = f.hidden_field :last_name_kana
+      .form-group
+        = f.label :first_name_kana
+        span #{@admin_user.first_name_kana}
+        = f.hidden_field :first_name_kana
+      .form-group
+        = f.label :tel
+        span #{@admin_user.tel}
+        = f.hidden_field :tel
+      .form-btn-container
+        = f.hidden_field :password
+        = f.hidden_field :password_confirmation
+        = f.submit t('.send_confirmation', :default => "登録"), class: "btn btn-primary btn-login", data: {confirm: '送信します。よろしいですか？', disable_with: '送信中'}

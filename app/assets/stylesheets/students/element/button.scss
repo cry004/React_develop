@@ -1,0 +1,62 @@
+.el-button {
+  width: 360px;
+  height: 60px;
+  line-height: 60px;
+  font-size: $font-size-40;
+  border-radius: 4px;
+  text-align: center;
+  display: inherit;
+  cursor: pointer;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: background-color 0.15s ease;
+  &.is-white {
+    background-color: $color-white;
+    color: $color-text-gray;
+    &:hover {
+      background-color: $color-white-hover;
+    }
+  }
+  &.is-blue {
+    background-color: $color-blue;
+    color: $color-white;
+    &:hover {
+      background-color: $color-blue-hover;
+    }
+  }
+  &.is-red {
+    background-color: $color-red;
+    color: $color-white;
+    &:hover {
+      background-color: #a61701;
+    }
+  }
+  &.is-disabled {
+    color: $color-light-gray;
+    cursor: default;
+  }
+  &.color-transparent {
+    background-color: transparent;
+    border: 1px solid $color-white;
+    color: $color-white;
+  }
+  &.size-large {
+    width: 484px;
+  }
+  &.size-small {
+    width: 270px;
+  }
+}
+.el-button-gray {
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+  font-size: $font-size-30;
+  background-color: #f3f3f3;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  color: #999999;
+  text-decoration: none;
+  cursor: pointer;
+}

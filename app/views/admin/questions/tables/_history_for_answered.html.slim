@@ -1,0 +1,41 @@
+- yield_name = "table_headers_history_for_answered_#{rand(100)}"
+- content_for yield_name do
+  thead
+    tr
+      th 質問ID
+      th 生徒ID
+      th 生徒の学年
+      th 学校種別
+      th 科目
+      th 動画
+      th ビデオの科目
+      th タイトル
+      th 状態
+      - if @admin_user.role =="answerer"
+        th コメント
+      - else
+        th 回答者メールアドレス
+      th 作成日
+table
+  = yield yield_name
+  - items.each_with_index do |item|
+    tr[class='"#{cycle('even', 'odd')}"' id='"#{dom_id(item)}"']
+    - table_fields_for_history_for_answered(item).each_with_index do |value, index|
+      td
+        - case index
+        - when 0
+          = item.question.id
+          .actions
+            = link_to "内容を見る", "/admin/posts/show/#{item.id}"
+        - when 8
+          = button_to decorate_state(item), { controller: "admin/posts", action: "show", id: item.id }
+        - when 9
+          - if @admin_user.role =="answerer"
+            = item.try(:comment_from_executive_answerer).try(:truncate, 10)
+          - else
+            = value
+        - else
+          = value
+  = yield yield_name
+
+

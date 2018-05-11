@@ -1,0 +1,63 @@
+.u-hidden {
+  display: none!important;
+}
+.u-left {
+  float: left!important;
+}
+.u-right {
+  float: right!important;
+}
+.u-clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// ================
+// # color
+// ================
+// 英語
+.u-color-english,
+.u-color-english_writing,
+.u-color-english_listening {
+  color: $color-english;
+}
+// 数学
+.u-color-math,
+.u-color-mathematics,
+.u-color-mathematics_1a,
+.u-color-mathematics_2b {
+  color: $color-math;
+}
+// 理科
+.u-color-science,
+.u-color-chemistry,
+.u-color-physics,
+.u-color-biology {
+  color: $color-science;
+}
+// 社会
+.u-color-society,
+.u-color-social_studies,
+.u-color-geography,
+.u-color-history,
+.u-color-sociology,
+.u-color-civics {
+  color: $color-society;
+}
+.u-color-japanese {
+  color: $color-japanese;
+}
+
+// ================
+// # color
+// ================
+.u-font-bold {
+  font-family: "Helvetica Neue Bold", 'ヒラギノ角ゴ Pro W6', "Helvetica Neue", helvetica, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, sans-serif;
+}

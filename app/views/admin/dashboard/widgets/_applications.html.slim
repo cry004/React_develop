@@ -1,0 +1,33 @@
+- applications = admin_user.applications
+-   # Detect if we are inside an application.
+- title = ""
+- if (application = params[:application])
+  - applications.each do |app|
+    - applications = [app] if app.parameterize == application
+  - title = applications.first
+- else
+  - title = "Site"
+-   page_title = Typus::I18n.t("#{title} administration", :title => title)
+h2
+  = page_title
+- if applications.any?
+  - applications.each do |app|
+    // admin権限以外はユーザー管理が表示されないようにする
+    - next if @admin_user.role != "admin"
+    table[style="margin-bottom: 1em;"]
+      thead
+        tr
+          th
+            = Typus::I18n.t(app)
+      - admin_user.application(app).map(&:constantize).each do |klass|
+        - unless klass.typus_options_for(:hide_from_dashboard)
+          |  <tr class="
+          = cycle("even", "odd")
+          | "> 
+          // LineItemはダッシュボードに表示させない
+          - next if klass.to_resource == "line_items" || klass.to_resource == "posts" || klass.to_resource == "spent_point_histories"
+          td
+            = link_to klass.model_name.human.pluralize, :controller => "/admin/#{klass.to_resource}"
+- else
+  .notice
+    = Typus::I18n.t("No applications detected.")

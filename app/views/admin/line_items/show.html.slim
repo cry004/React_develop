@@ -1,0 +1,22 @@
+- page_title = Typus::I18n.t("Show %{resource}", :resource => @resource.model_name.human)
+- admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+  = admin_display_flash_message
+  = render 'show'
+  dl
+    - build_display(@item, fields).each do |attribute, type|
+      dt
+        = attribute
+      dd
+        = type
+    h3 教科書設定をする
+    = form_tag controller: "/admin/line_items", action: "set_schoolbook" do
+      = hidden_field_tag :id, @item.id
+      = select_tag "line_item[schoolbook_name]", options_for_select(["NEW HORIZON","Sunshine","TOTAL ENGLISH","NEW CROWN","ONE WORLD","COLUMBUS21"])
+      = submit_tag "設定する", data: { confirm: "教科書設定をしてもよろしいでしょうか？" }
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

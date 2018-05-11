@@ -1,0 +1,41 @@
+.correctionModal
+  .correctionModal__overlay
+
+  .correctionModal__window
+    .correctionModal__window__title
+      | 添削指導に際しての注意点
+
+    .correctionModal__window__subTitle
+      | ご参加の前にお読みください
+
+    ul.correctionModal__window__mainText
+      li.correctionModal__window__mainText__list
+        | 先生方は、ご自身が作成した添削指導内容が当社に回答として採用された場合には、その添削指導の対価として、「指導ポイント」を獲得することができます。指導ポイントは、回答が１問採用されるごとに、当社の定めるポイント数（当社が先生方の評価等に応じて個別に１問当たりの獲得ポイント数を設定するものとします。）を獲得するものとします。
+      li.correctionModal__window__mainText__list
+        | 先生方は、獲得して保有するポイントを、１回当たり5000ポイント以上の単位で、１ポイントを１円の比率で金銭に換算し、当社から受領することができます。振込事務作業効率等の観点から、5000ポイント未満のポイント換金は受け付けられませんのでご注意ください。
+      li.correctionModal__window__mainText__list
+        | 換算を希望する教師は、当社に対し、所定の方法で当社にご通知ください。添削指導実績等を確認の上、換算された金銭をお支払いします。
+
+    a.correctionModal__window__link href="https://s3.amazonaws.com/www.try-it.jp/teacher_service_manual.pdf" target="_blank"
+      | 添削指導サービスマニュアル　ダウンロード（必読）
+
+    .correctionModal__window__check
+      input type="checkbox" name="check" value="checked" id="check1"
+      label
+        | マニュアルの内容を十分に理解し添削指導を行います。
+        br
+        span
+          | ※マニュアルに沿わない添削指導の場合はポイント（報酬）の対象とならないことに合意します
+
+    .correctionModal__window__buttonArea
+      = submit_tag '添削指導を行う', class: "button", id: "confirm",disabled: "disabled"
+
+coffee:
+  $('#check1').on 'click', ->
+    if $(this).is ':checked'
+      $('#confirm').removeAttr 'disabled','disabled'
+    else
+      $('#confirm').attr 'disabled','disabled'
+
+  $('#confirm').on 'click', ->
+    $('.correctionModal').addClass 'close'

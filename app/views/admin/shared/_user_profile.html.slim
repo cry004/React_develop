@@ -1,0 +1,37 @@
+.typus__admin_username
+  h1
+    = admin_user.last_name + " " + admin_user.first_name
+- if admin_user.role == "answerer"
+  .typus__default_header
+    .typus__user_info
+      dl
+        dt 現在のランク
+        dd
+          = admin_user.rank
+        dt 未払い報酬ポイント
+        dd
+          = admin_user.unpaid_point
+          |  ポイント
+        dt 今月の承認済み回答数
+        dd
+          = admin_user.accepted_posts_at(Time.now).count
+        dt 先月の承認済み回答数
+        dd
+          = admin_user.accepted_posts_at_prev_month_count
+    .typus__pointRequest
+      h3 ポイントリクエスト
+      ul.typus__pointRequest__description
+        li 支払い金額には消費税額分が加算されます
+        li
+          | 支払いについてのお問い合わせはこちら：
+          = Settings.teacher_app_contact_tel
+        li
+          | ポイントの換金には誕生日の
+          = link_to "入力", "/admin/admin_users/edit/#{@admin_user.id}"
+          | が必要です
+        li ポイントの換金には、未払い報酬ポイントが5000ポイント以上必要です
+        - if Rails.env.in?(["teacher_develop", "development"])
+          li
+            | (検証環境(teacher-develop)の場合は、500ポイント以上でポイントリクエスト可能です。)
+      = form_for(@admin_user, url: { controller: "admin/admin_users", action: "point_request" }) do |f|
+        = f.submit "ポイントリクエストする", disabled: !@admin_user.can_point_request?, data: { confirm: "ポイントリクエストを実行してもよろしいでしょうか。", disable_with: "処理中..." }

@@ -1,0 +1,87 @@
+- page_title = @resource.model_name.human.pluralize
+- admin_title(page_title)
+
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  .schoolbooks_settings_state
+    p 教科書設定状況
+    dl
+      dt 教科書設定済みの生徒数
+      dd
+        = @user_static.schollbooks_settings_state_true_students_count
+        |  人
+      dt 教科書未設定の生徒数
+      dd
+        = @user_static.schollbooks_settings_state_false_students_count
+        |  人
+
+  - if (build_filters || admin_search)
+    .filters
+      = build_filters
+  .csv_download
+    h3 生徒分析表CSVダウンロード
+    p
+      = button_to('CSVダウンロードする', controller: 'admin/students',
+                  action: :csv_download, format: :csv)
+
+  .rake_task
+    = form_tag(controller: '/admin/students', action: :do_student_info_rake_task) do
+      h3 利用者情報シート更新
+      p * slackのgeneralに"利用者情報の更新に失敗しました"という通知がされた場合のみ実行するようにしてください。
+      p * 更新するボタンを押して更新する場合は必ずslackのgeneralチャンネルに通知してからにしてください。
+      p * 二重で更新されるの避けるためです。
+      = submit_tag('更新する', data: { confirm: '実行してもよろしいでしょうか？' })
+
+  .typus__search
+    .typus__search__header
+      span.typus__seach__hearder_title 検索
+      = link_to('全て表示する', '/admin/students',
+                class: 'typus__search__header_link')
+    = select_tag('search[attribute]',
+                options_for_select(Search::Student::OPTIONS_FOR_SELECT.invert,
+                                   selected: @selected),
+                prompt: '検索する項目を選択してください',
+                id: 'typusSearchAttribute')
+
+    = text_field_tag('search[value]', @text_filter, id: 'typusSearchText')
+    = button_tag('検索', id: 'typusSearchButton')
+    div style= "margin-top: 10px"
+      = form_tag({controller: '/admin/students', action: :index}, method: :get)
+        = select_tag('member_type_state[current_member_type]', options_for_select(Search::Student::ATTRIBUTES_CURRENT_MEMBER_TYPE,
+                                    selected: @selected_current_member_type),
+                                    prompt: '現在の会員種別')
+        = select_tag('member_type_state[state]', options_for_select(Search::Student::ATTRIBUTES_STATE,
+                                    selected: @selected_state),
+                                    prompt: '状態')
+        = submit_tag "絞り込み"
+  = form_tag({controller: '/admin/students', action: :csv_of_search, format: :csv},
+                              class: "formDownloadCSV", method: :get)
+    - if @text_filter.present?
+      = hidden_field_tag(@selected, @text_filter)
+    - else
+      = hidden_field_tag('member_type_state[current_member_type]', @selected_current_member_type)
+      = hidden_field_tag('member_type_state[state]', @selected_state)
+    = submit_tag('検索結果をCSVダウンロードする', id: 'buttonDownloadCSV', style: 'float: right')
+
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions(build_list(@resource, fields, @items))
+    - else
+      = build_list(@resource, fields, @items)
+    = paginate(@items)
+  - else
+    p
+      = Typus::I18n.t('No entries found.')
+
+= render('admin/shared/user_profile')
+.grid_2
+  = build_sidebar
+.grid_10
+  = yield :main_grid
+
+coffee:
+  new TryAdminApp.SearchView

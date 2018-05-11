@@ -1,0 +1,25 @@
+- page_title = @resource.model_name.human.pluralize
+- admin_title(page_title)
+
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  - if (build_filters || admin_search)
+    .filters
+      = build_filters
+      = admin_search
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions { build_list(@resource, fields, @items) }
+    - else
+      = build_list(@resource, fields, @items)
+    = paginate @items
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+
+.grid_8.no_sidebar
+  = yield :main_grid

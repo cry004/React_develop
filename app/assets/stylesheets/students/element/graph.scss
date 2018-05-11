@@ -1,0 +1,27 @@
+.el-graph {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  &-number {
+    position: absolute;
+    margin: 0;
+    top: 20px;
+    left: 21px;
+    padding-top: 23px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: $font-size-20;
+    span {
+      font-size: $font-size-60;
+      font-weight: bold;
+    }
+  }
+}

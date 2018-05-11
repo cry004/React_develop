@@ -1,0 +1,183 @@
+.bl-header {
+  position: fixed;
+  width: 100%;
+  min-width: $width-min-content;
+  height: 66px;
+  padding-top: 20px;
+  background-color: #ffffff;
+  z-index: 5000;
+  overflow: visible;
+  &.is-login {
+    position: absolute;
+    height: 120px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    .bl-header-logo {
+      display: block;
+      width: 112px;
+      height: 65px;
+      float: none;
+      margin: 2px auto 0;
+    }
+  }
+  &-logo {
+    margin-left: 15px;
+    width: 77px;
+    height: 48px;
+    float: left;
+    background-image: image-url('students/common/logo.png');
+    background-size: 100% auto;
+  }
+  &-keyword {
+    margin-left: 15px;
+    float: left;
+    position: relative;
+    width: 570px;
+    height: 46px;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      left: 16px;
+      z-index: 1;
+      width: 20px;
+      height: 20px;
+      background-image: image-url('students/common/icon/search.png');
+      background-size: cover;
+    }
+    &-input {
+      width: 100%;
+      height: 100%;
+      line-height: 46px;
+      font-size: 14px;
+      color: #999999;
+      padding-left: 44px;
+      background-color: $color-bg-gray;
+      border-radius: 4px;
+      border: none;
+      &.is-active {
+        background-color: $color-white;
+        color: $color-black;
+        border-color: $color-border-gray;
+      }
+    }
+    &-candidate {
+      position: fixed;
+      top: 80px;
+      width: 570px;
+      padding: 0;
+      background-color: $color-white;
+      border: 1px solid $color-light-gray;
+      border-radius: 4px;
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+      font-size: $font-size-30;
+      list-style: none;
+      li {
+        padding: 5px 5px 5px 42px;
+        background-image: image-url('students/common/icon/search.png');
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: 12px 12px;
+        line-height: 34px;
+        cursor: pointer;
+        &.icon-history {
+          background-image: image-url('students/common/icon/history.png');
+          background-size: 20px 19px;
+          background-position: 12px 13px;
+        }
+        &:hover {
+          background-color: $color-bg-gray;
+        }
+      }
+    }
+  }
+  &-menu {
+    float: right;
+    margin-right: 15px;
+    &-question {
+      width: 160px;
+      height: 38px;
+      text-align: center;
+      display: inline-block;
+      float: left;
+      padding-left: 28px;
+      line-height: 38px;
+      font-size: 14px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+      color: #999999;
+      text-decoration: none;
+      background-color: #f3f3f3;
+      background-image: image-url('students/common/icon/question.png');
+      background-size: 18px 17px;
+      background-repeat: no-repeat;
+      background-position: 25% center;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      &:hover {
+        background-color: $color-light-gray;
+      }
+    }
+    &-notification {
+      float: left;
+      margin-left: 35px;
+      margin-right: 10px;
+      padding: 10px;
+      &:hover {
+        .el-menu.is-notification {
+          display: block;
+        }
+      }
+      &-bell {
+        display: block;
+        width: 18px;
+        height: 20px;
+        background-image: image-url('students/common/icon/bell.png');
+        background-size: 18px 20px;
+        position: relative;
+        & .unread-message {
+          display: none;
+        }
+        &.is-unread .unread-message {
+          display: block;
+          min-width: 18px;
+          height: 18px;
+          border-radius: 9px;
+          background: $color-red;
+          position: absolute;
+          right: 9px;
+          top: -8px;
+          color: $color-white;
+          font-size: .6rem;
+          text-align: center;
+          line-height: 17px;
+          padding: 0 3px;
+          border: 1px solid $color-white;
+        }
+      }
+    }
+    &-mypage {
+      margin-left: 5px;
+      float: left;
+      padding-bottom: 20px;
+      padding-left: 10px;
+      cursor: pointer;
+      &:hover {
+        .el-menu.is-mypage {
+          display: block;
+        }
+      }
+      &-icon {
+        width: 40px;
+        height: 40px;
+        display: block;
+        background-size: 100%;
+        cursor: default;
+        @for $i from 0 through 19 {
+          &.is-#{$i} {
+            background-image: image-url('students/profile/student-#{$i}.png');
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+- page_title = Typus::I18n.t("Show %{resource}", :resource => @resource.model_name.human)
+- admin_title(page_title)
+- title_image = @item.video_title_image
+- subtitle_image = @item.video_subtitle_image
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  = render 'show'
+  .container
+    h2 組版画像
+    .section
+      h3 タイトル画像
+      p
+        | タイトル文字列: 
+        = @item.name
+      = form_tag "/admin/videos/typeset" do
+        = label_tag :height_ratio, "画像の天地サイズ"
+        br
+        = link_to "＊画像の天地サイズに関して", "https://s3-ap-northeast-1.amazonaws.com/try-it-video-title-image/height_ratio.png"
+        br
+        = render "admin/shared/height_ratio"
+        = hidden_field_tag :id, @item.id
+        = hidden_field_tag :type, "VideoTitleImage"
+        = label_tag :tex_text, "Texテキスト"
+        br
+        = link_to "＊tex数式の書式に関するリファレンス", "http://www1.kiy.jp/~yoka/LaTeX/latex.html"
+        br
+        br
+        p
+          | \begin{document} … \end{document}は予め入力されています。…の部分を入力してください。
+        br
+        br
+        h4
+          | バックスラッシュ( \ ) ＊コピーして使用してください
+        br
+        br
+        = text_area_tag :tex_text, title_image.try(:tex_text).present? ? title_image.try(:tex_text) : @item.name
+        = submit_tag "組版する"
+        br
+        br
+      - if title_image
+        h3 現在設定されているタイトル画像の画像サイズ
+        p
+          = "サイズ: width: #{title_image.try(:width)}, height: #{title_image.try(:height)}"
+        h3 現在設定されているタイトル画像の画像URL
+        p
+          = title_image.resource_url
+        h3 組版画像
+        p ブラウザをリロードすると、組版結果が反映されます。
+        = image_tag title_image.resource_url
+    - if @item.subname.present?
+      .section
+        h3 サブタイトル画像
+        p
+          | サブタイトル文字列: 
+          = @item.subname
+        = form_tag "/admin/videos/typeset" do
+          = label_tag :height_ratio, "画像の天地サイズ"
+          = render "admin/shared/height_ratio"
+          = hidden_field_tag :id, @item.id
+          = hidden_field_tag :type, "VideoSubtitleImage"
+          = label_tag :tex_text, "Texテキスト"
+          br
+          br
+          = text_area_tag :tex_text, (subtitle_image.try(:tex_text).present? ? subtitle_image.try(:tex_text) : @item.subname)
+          = submit_tag "組版する"
+        - if subtitle_image
+          h3 現在設定されているサブタイトル画像の画像サイズ
+          p
+            = "width: #{subtitle_image.try(:width)}, height: #{subtitle_image.try(:height)}"
+          h3 U現在設定されているサブタイトル画像の画像URL
+          p
+            = subtitle_image.resource_url
+          h3 組版画像
+          p ブラウザをリロードすると、組版結果が反映されます。
+          = image_tag subtitle_image.resource_url
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

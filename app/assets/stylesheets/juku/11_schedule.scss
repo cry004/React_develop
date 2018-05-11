@@ -1,0 +1,180 @@
+.Schedule {
+  &__container {
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    min-height: 600px;
+    background-color: #FFF;
+  }
+  &__contents {
+    opacity: 0;
+    position: absolute;
+    width: calc(100% - 227px);;
+    left: 235px;
+    background-color: #fcfcfc;
+    min-width: 740px;
+    padding-bottom: 20px;
+  }
+  &__note {
+    padding: 15px;
+    color: $pink-color;
+    margin-top: 71px;
+  }
+  &__header {
+    border-bottom: 1px solid $blue-color;
+    background-color: #FFF;
+    padding: 15px 20px;
+    width: calc(100% - 235px);
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 1;
+    .el-button {
+      margin-right: 12px;
+      &.is-today {
+        margin-right: 20px;
+      }
+    }
+    .date {
+      width: 310px;
+      background-color: #FFF;
+      background-image: image-url("juku/icon-select-down-black.gif");
+      background-repeat: no-repeat;
+      background-position: 296px 4px;
+      color: #000;
+      font-weight: bold;
+    }
+    &-right {
+      position: absolute;
+      right: 9px;
+      top: 15px;
+    }
+  }
+  &__timeList, &__list {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    display: table;
+    &-item {
+      display: table-cell;
+    }
+  }
+  &__timeList {
+    margin-top: 10px;
+    &-item {
+      padding: 15px 0;
+      text-align: center;
+      &.date {
+        width: 7%;
+        padding: 15px;
+      }
+    }
+  }
+  &__box {
+    width: 100%;
+    table-layout: fixed;
+    &-item {
+      border-bottom: 1px solid #DDD;
+      position: relative;
+    }
+    &-container {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      height: 114px;
+      box-sizing: border-box;
+      .studentarea {
+        padding: 5px 10px;
+        border-bottom: 1px dashed #DDD;
+      }
+      .subjectarea {
+        cursor: pointer;
+        overflow: hidden;
+        padding: 5px 10px;
+        &:hover {
+          background: #E8E8E8;
+        }
+      }
+      .name {
+        font-size: 1.6rem;
+        font-weight: bold;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+      .subject {
+        font-weight: bold;
+        float: left;
+        font-size: 1.2rem;
+      }
+      .config {
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 1px 8px;
+        float: right;
+        &.true {
+          background-color: #BEBEBE;
+          color: #FFF;
+          &:after {
+            content: "設定済";
+          }
+        }
+        &.false {
+          background-color: $pink-color;
+          color: #FFF;
+          &:after {
+            content: "未設定";
+          }
+        }
+      }
+    }
+  }
+  &__list {
+    border-top: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    &.today {
+      background-color: #eaf5ff;
+    }
+    &.holiday {
+      background-color: #ffeaea;
+    }
+    &-item {
+      border-right: 1px solid #DDD;
+      border-bottom: 1px dashed #DDD;
+      position: relative;
+      vertical-align: top;
+      &:first-child {
+        width: 7%;
+      }
+      &.num {
+        height: 114px;
+        text-align: center;
+        color: $blue-color;
+        font-weight: bold;
+        border-bottom: 1px solid #DDD;
+        vertical-align: middle;
+        padding: 0 15px;
+      }
+      &.date {
+        text-align: center;
+        color: $blue-color;
+        font-weight: bold;
+        border-bottom: 1px solid #DDD;
+        width: 70px;
+        padding: 15px;
+        vertical-align: middle;
+      }
+    }
+    tr.Schedule__row:last-child > td {
+      border-bottom: 1px solid #DDD;
+    }
+  }
+  &__row {
+    &.today {
+      background-color: #eaf5ff;
+    }
+    &.holiday {
+      background-color: #ffeaea;
+    }
+  }
+}

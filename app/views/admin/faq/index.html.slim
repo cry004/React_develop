@@ -1,0 +1,68 @@
+.faq-teacher
+  .faq-teacher__contents
+    .faq-teacher__contents__title
+      | よくある質問
+    .faq-teacher__contents__article
+      |▼事前登録につきまして
+      p
+        | 添削指導に参加いただく場合は、下記URLより事前登録をお願いします。
+      p
+        = link_to nil, "https://teacher.try-it.jp/admin/teacher_accounts/new"
+
+    .faq-teacher__contents__article
+      | ▼実際に添削指導を行うには？
+      p
+        | 事前登録後、下記URLより添削指導を実施いただけます。
+      p
+        = link_to nil, "https://teacher.try-it.jp/admin/session/new"
+    .faq-teacher__contents__article
+      | ▼パスワードを忘れた方はこちら
+      p
+        | パスワードを忘れた場合は、下記URLより再設定できます。
+        br
+        | ご登録済のメールアドレスを入力いただき、再設定方法を送信してください。
+      p
+        = link_to nil, "https://teacher.try-it.jp/admin/account/forgot_password"
+    .faq-teacher__contents__article
+      | ▼質問の表示について
+      p
+        | 現在、日に30〜60件程度の質問が寄せられています。
+        br
+        | どうしても質問時間に偏りが生じるため、
+        br
+        | 回答する質問がない場合は、少し時間帯をずらしてアクセスしてください。
+    .faq-teacher__contents__article
+      | ▼添削指導のコツについて
+      p
+        | 多くの先生方に添削を作成いただいておりますが、
+        br
+        | 作成物を「不採用」にせざるを得ない場合があります。
+        br
+        | 回答を作成いただく際は、「仕様書」と合わせて、下記の点ご留意ください。
+      ul
+        li 簡単な質問に対しても、Ａ４用紙１枚全体を使用して回答してください。
+        li 質問の答えだけを書くのではなく、「なぜ生徒がその質問をしたのか」を考えながら内容をふくらませてください。
+        li 重要な箇所に赤字（青字）を用い、見やすい回答としてください。（全体の２割程度が赤字のイメージです）
+        li 中学生が理解できることばや文章を使用してください。難しい言葉を使う場合は、ルビや説明を加えてください。
+        li なるべく紙以外の背景が映らないように撮影を工夫してください。
+      p
+        | 仕様書は
+        = link_to "こちら", "http://www.trygroup.co.jp/pdf/tensaku.pdf", target: "_new"
+        |  で確認できます。
+    .faq-teacher__contents__article
+      | ▼ポイントの換金について
+      p
+        | 現在、ポイントの換算方法がわかりにくくなっており、大変ご迷惑をおかけしております。
+        br
+        | ポイントは、「承認された回答数×200ポイント」で計算することができます。
+      p
+        | ポイントの表示・換算については、全自動でおこなえるようシステムを整備しておりますが、
+        br
+        | 取り急ぎ、tensaku@trygroup.com　にご連絡いただければ、順次換金を致します。
+        br
+        | 毎月月末までにご連絡いただいた方へ、翌月25日にトライ登録の銀行口座へお支払い致します。
+        br
+        | 必ずご確認のメールを致しますので、連絡がない場合は下記連絡先までご連絡ください。
+      p
+        | 連絡先TEL: 
+        = Settings.teacher_app_contact_tel

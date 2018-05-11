@@ -1,0 +1,9 @@
+- content_for :main_grid do
+  = render partial: "/admin/questions/shared/item", locals: { question_item: @item }
+  = button_to *return_link(@item)
+  = button_to *stop_link(@item)
+  - if (@admin_user.role == "admin" || @admin_user.role == "executive_answerer") && (@item.state != "examining" && @item.state != "open" )
+    = button_to "質問を差し戻す", "/admin/questions/force_reject_edit/#{@item.id}", class: "typus__button__cancel"
+
+.typus__main__content__show
+  = yield :main_grid

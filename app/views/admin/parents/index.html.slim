@@ -1,0 +1,60 @@
+- page_title = @resource.model_name.human.pluralize
+-   admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  = form_tag({ controller: '/admin/parents', action: :docomo_users_csv, method: 'post'}, { multipart: true }) do
+    = label_tag(:file, 'docomo_campaign 本会員登録確認')
+    = file_field_tag(:file)
+    = submit_tag("アップロード", data: { disable_with: "送信中..." })
+  p
+    | 下記のようなフォーマットのCSVファイルをアップロードしてください
+    br
+    | email
+    br
+    | hogehoge@example.com
+    br
+    | hagehage@example.com
+    br
+  = render 'index'
+  ul.predefined_filters
+    / brakemanのテストを通るため
+    - params_copy = params.dup
+    li
+      = link_to Typus::I18n.t("All"), params_copy.dup.cleanup.merge(:action => 'index')
+      = "(#{resource.count})" if @resource.typus_options_for(:counters)
+    - @resource.typus_scopes.each do |scope|
+      li
+        = link_to Typus::I18n.t(scope.humanize), :action => 'index', :scope => scope
+        = "(#{@resource.send(scope).count})" if @resource.typus_options_for(:counters)
+    - predefined_filters.each do |filter, action, scope|
+      li
+        - url = action.is_a?(String) ? params.dup.cleanup.merge(:action => action) : action
+        = link_to sanitize(Typus::I18n.t(filter), url)
+        = "(#{@resource.send(scope).count})" if @resource.typus_options_for(:counters) && scope && @resource.respond_to?(scope)
+    - if resource.any? && (formats = resource.typus_options_for(:export).extract_settings).any?
+      li
+        | |
+      - formats.each do |format|
+        li
+          = link_to format.upcase, params_copy.merge(:format => format)
+  - if (build_filters || admin_search)
+    .filters
+      = build_filters
+      = admin_search
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions { build_list(@resource, fields, @items) }
+    - else
+      = build_list(@resource, fields, @items)
+    = admin_paginate(@items, Typus.pagination)
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+.grid_2
+  = build_sidebar
+.grid_10
+  = yield :main_grid

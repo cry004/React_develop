@@ -1,0 +1,49 @@
+.error-container {
+  background-color: #262672;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  .mrtry {
+    text-align: center;
+    padding: 68px 0 0;
+    margin: 0;
+  }
+  .dialog {
+    padding: 0;
+    margin: 0;
+    h1 {
+      padding: 20px 0;
+      margin: 0;
+      color: #FFC600;
+      text-align: center;
+      font-weight: normal;
+      font-size: 2.0rem;
+    }
+    .alert-error {
+      font-size: 1.2rem;
+      color: #ffc600;
+      border: 1px solid #5B5BA4;
+      -webkit-border-radius: 3px;
+              border-radius: 3px;
+      vertical-align: middle;
+      width: 480px;
+      padding: 10px 20px;
+      margin: 0 auto 40px;
+      text-align: center;
+      line-height: 2.5;
+      &:before {
+        content: '';
+        display: block;
+        background-image: image-url('sp/icon_login_error.png');
+        background-repeat: no-repeat;
+        background-position: center top;
+        width: auto;
+        height: 38px;
+        background-size: 38px 38px;
+        vertical-align: middle;
+        margin-bottom: 7px;
+      }
+    }
+  }
+}
+

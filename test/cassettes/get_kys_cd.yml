@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cs.trygroup.co.jp/cstest/home.pc?cs_param=sso&im_password=Mw_bqA5K&im_user=S50089000101&tryg2=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - No-Cache
+      Pragma:
+      - No-Cache
+      Content-Type:
+      - text/html; charset=Windows-31J
+      Server:
+      - Microsoft-IIS/7.5
+      Set-Cookie:
+      - JSESSIONID=abclAJgVqrr2B7K_zhulv; path=/; secure; HttpOnly
+      - jp.co.intra_mart.session.cookie=|user|pc|ja|Windows-31J|home|S50089000101|blue|/cstest/home.pc|;
+        secure; HttpOnly
+      Date:
+      - Fri, 12 Feb 2016 06:14:17 GMT
+      Content-Length:
+      - '209'
+    body:
+      encoding: UTF-8
+      string: "\r\n<HTML>\r\n<BODY onLoad=\"document.forms[0].submit();\">\r\n\t<form
+        name=\"page_form\" action=\"/_-B-_/cstest/trycs/jsp/common/sso.jsp;jsessionid=abclAJgVqrr2B7K_zhulv\"
+        method=\"GET\">\r\n\t\t\r\n\t</form>\r\n</BODY>\r\n</HTML>\r\n\r\n"
+    http_version: 
+  recorded_at: Fri, 12 Feb 2016 06:14:21 GMT
+- request:
+    method: post
+    uri: https://cs.trygroup.co.jp/cstest/conf.cs_R01-R010006.service;jsessionid=abclAJgVqrr2B7K_zhulv;tryg2
+    body:
+      encoding: UTF-8
+      string: '{"KYS_SMI":"橋谷尚","KYS_KNSMI":"ハシヤヒサシ","BIRTH_DATE_YMD":"19460604","TEL_NO":"0352112211","MAIL":"h.hashiya@example.com"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      Server:
+      - Microsoft-IIS/7.5
+      Date:
+      - Fri, 12 Feb 2016 06:14:17 GMT
+      Content-Length:
+      - '111'
+    body:
+      encoding: UTF-8
+      string: "\r\n\r\n{\r\n  \"meta\": {\r\n    \"code\": 201\r\n    \r\n  },\r\n
+        \ \"data\": {\r\n    \r\n  \t\"KYS_CD\" : \"13016002560\"\r\n    \r\n  }\r\n}\r\n"
+    http_version: 
+  recorded_at: Fri, 12 Feb 2016 06:14:21 GMT
+recorded_with: VCR 3.0.1

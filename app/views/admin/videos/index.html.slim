@@ -1,0 +1,106 @@
+- page_title = @resource.model_name.human.pluralize
+- admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  = render 'index'
+
+  .typus__filter
+    h4 フィルタ
+    = label_tag "", "学年", class: "typus__filter__label"
+    = select_tag "schoolyear", options_for_select({ c1: "c1", c2: "c2", c3: "c3", k: "k" }, selected: @video_schoolyear_fileter_selected), prompt: "", class: "typus__filter__select"
+    = label_tag "", "科目"
+    = select_tag "subject", options_for_select(Subject.where(for_video: true).map{|subject| [subject.full_name, subject.full_name]}, selected: @video_subject_fileter_selected), prompt: "", class: "typus__filter__select"
+    = button_tag "適用", id: "filter_button"
+  .typus__search
+    .typus__search__header
+      span.typus__seach__hearder_title
+        | 検索
+      = link_to "全て表示する", "/admin/videos", class: "typus__search__header_link"
+    = select_tag "search[attribute]", options_for_select({ "動画ID" => "video_id", "ファイル名" => "video_filename", "ミルビィの動画ID" => "video_id_contents", "1.4倍速のミルビィの動画ID" => "video_double_speed_id_contents", "タイトル" => "video_title", "サブタイトル" => "video_subtitle" }), prompt: "検索する項目を選択してください"
+
+    = text_field_tag "search[value]"
+    = button_tag "検索", id: "search_button"
+
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions { build_list(@resource, fields, @items) }
+    - else
+      = build_list(@resource, fields, @items)
+    = admin_paginate(@items, Typus.pagination)
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+.grid_2
+  = build_sidebar
+.grid_10
+  = yield :main_grid
+
+javascript:
+  function getUrlVars(){
+      var vars = [], max = 0, hash = "", array = "";
+      var url = window.location.search;
+
+      hash  = url.slice(1).split('&');
+      max = hash.length;
+      for (var i = 0; i < max; i++) {
+          array = hash[i].split('=');
+          vars.push(array[0]);
+          vars[array[0]] = array[1];
+      }
+      return vars;
+  }
+  $(function() {
+    // フィルタで選択されたものをクエリ文字列に含める。
+    $("#filter_button").click(function(){
+      var query_string = "/admin/videos?schoolyear=all&subject=all"
+      var schoolyear = $("#schoolyear").val();
+      var subject = $("#subject").val();
+      debugger;
+      if(schoolyear != "") {
+        query_string = query_string.replace("schoolyear=all", "schoolyear=" + schoolyear)
+      }
+      if(subject != ""){
+        query_string = query_string.replace("subject=all", "subject=" + subject)
+      }
+      window.location.href = query_string;
+    });
+
+    // クエリ文字列に含まれているschoolyearの値を取得して、select_tagのdefault値に設定する。
+    var query_string = getUrlVars()
+    $("#schoolyear option").filter(function(){
+      return $(this).val() == query_string["schoolyear"]
+    }).prop("selected", true);
+
+    // クエリ文字列に含まれているsubjectの値を取得して、select_tagのdefault値に設定する。
+    var query_string = getUrlVars()
+    $("#subject option").filter(function(){
+      return $(this).val() == query_string["subject"]
+    }).prop("selected", true);
+
+    var seach_attribute = query_string[0]
+    $("#search_attribute option").filter(function(){
+      return $(this).val() == query_string[0]
+    }).prop("selected", true);
+
+    // 検索項目が入力されないかぎりボタンはdiabled
+    $("#search_attribute").change(function(){
+      if($(this).val() != ""){
+        $("#search_button").prop("disabled", false);
+      } else {
+        $("#search_button").prop("disabled", true);
+      }
+    }).change();
+
+    // 検索ボタンが押された場合にクエリ文字列を付与して遷移する。
+    $("#search_button").click(function(){
+      var searchAttribute = $("#search_attribute").val();
+      var searchValue = $("#search_value").val();
+      window.location.href = ("/admin/videos?" + searchAttribute + "=" + searchValue);
+    });
+  });
+
+

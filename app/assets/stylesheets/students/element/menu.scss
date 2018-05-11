@@ -1,0 +1,157 @@
+.el-menu {
+  display: none;
+  width: 360px;
+  position: fixed;
+  top: 70px;
+  border: 1px solid $color-border-gray;
+  border-radius: 4px;
+  background-color: $color-bg-light-gray;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.3);
+  // アイコンとメニューの間に擬似的なpaddingをつけて
+  // このbeforeの部分をhoverしている時も、el-menuが
+  // display: blockのままになるようにしている
+  &:before { 
+    position: absolute;
+    content: "";
+    width: 360px;
+    height: 15px;
+    top: -15px;
+  }
+  &.is-notification {
+    right: 85px;
+  }
+  &.is-mypage {
+    right: 15px;
+  }
+  &-header,
+  &-footer {
+    font-size: $font-size-30;
+    font-weight: bold;
+    height: 44px;
+    line-height: 44px;
+  }
+  &-header {
+    position: relative;
+    padding: 0 13px;
+    border-bottom: 1px solid $color-border-gray;
+    cursor: default;
+    a {
+      font-size: $font-size-20;
+      font-weight: normal;
+      color: $color-text-gray;
+      cursor: pointer;
+      transition: color 0.15s ease;
+      &:hover {
+        color: $color-gray-hover;
+      }
+    }
+    &-name {
+      max-width: 138px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: inline-block;
+      vertical-align: top;
+    }
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      right: 10px;
+      border: 7px solid transparent;
+      border-top-width: 0;
+      width: 0;
+    }
+    &:before {
+      border-bottom-color: $color-border-gray;
+      top: -7px;
+    }
+    &:after {
+      border-bottom-color: $color-bg-light-gray;
+      top: -6px;
+    }
+  }
+  &-footer {
+    border-top: 1px solid $color-border-gray;
+    text-align: center;
+    transition: background-color 0.15s ease;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: $color-text-gray;
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: $color-light-gray;
+    }
+  }
+  &-main {
+    max-height: 150px;
+    overflow-y: scroll;
+  }
+  &-list {
+    background-color: $color-white;
+    font-size: $font-size-30;
+    transition: background-color 0.15s ease;
+    &:hover {
+      background-color: $color-bg-gray;
+    }
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: $color-text-black;
+      cursor: pointer;
+      line-height: 1.4;
+      padding: 10px 18px;
+    }
+  }
+  &-notification {
+    position: relative;
+    padding: 8px 38px;
+    background-color: $color-white;
+    transition: background-color 0.15s ease;
+    cursor: ponter;
+    &.is-unread {
+      &:before {
+        position: absolute;
+        top: 22px;
+        left: 15px;
+        content: "●";
+        font-size: $font-size-50;
+        color: $color-blue;
+        display: inline-block;
+      }
+    }
+    &:hover,
+    &.is-active {
+      background-color: $color-bg-light-gray;
+    }
+    &-image {
+      margin-top: 7px;
+      width: 40px;
+      height: 40px;
+      background-image: image-url('students/profile/try.png');
+      background-size: cover;
+      &.is-teacher {
+        background-image: image-url('students/profile/teacher.png');
+      }
+    }
+    &-text {
+      margin-left: 15px;
+      width: calc(100% - 40px - 15px);
+      &-content {
+        font-size: $font-size-20;
+        line-height: 1.4;
+        max-height: 35px;
+        overflow: hidden;
+        word-break: break-all;
+      }
+      &-date {
+        color: $color-text-gray;
+        font-size: $font-size-10;
+      }
+    }
+  }
+}

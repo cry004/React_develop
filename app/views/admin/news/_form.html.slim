@@ -1,0 +1,182 @@
+= javascript_include_tag Ckeditor.cdn_url
+= render 'form_javascripts'
+= form_for @item, url: options, html: { class: 'resource', multipart: true } do |form|
+  = render 'helpers/admin/resources/errors'
+  fieldset.inputs
+    ol
+      = build_form(fields, form)
+      label 本文
+      = form.cktext_area :content, id: 'content-text'
+      li
+        div
+          label style="display:inline-block" 配信地域（都道府県）
+          span style="color:red"＊学校を指定している場合のみ配信されます
+        div
+        - prefecture_codes = JpPrefecture::Prefecture.all.map { |p| [p.name, p.code] }
+        = select_tag :where, options_for_select(prefecture_codes), id: "select-city", include_blank: '（複数選択できます）'
+        ul id = 'selected-cities'
+          -if @item.prefecture_codes.present?
+            - selected_cities = JpPrefecture::Prefecture.all.select { |p_c| p_c.code.to_s.in?(@item.prefecture_codes) }
+            - selected_cities.each do |selected_city|
+              li id = selected_city.code
+                = selected_city.name
+                span x
+        input name= 'news[prefecture_codes]' id='prefecture-codes-param' hidden= true
+      li
+        label 配信対象会員
+        .member-type-boxes
+          label
+            - fist_checked = ('fist').in?(@item.member_types) if @item.member_types.present?
+            = check_box_tag 'news[member_types][]', 'fist', fist_checked, class:'member-type'
+            span 内部会員
+          label
+            - tryit_checked = ('tryit').in?(@item.member_types) if @item.member_types.present?
+            = check_box_tag 'news[member_types][]', 'tryit', tryit_checked, class:'member-type'
+            span TryIT会員
+      li
+        label 配信対象学年
+        .students-grade
+          - GknnCd::NotificationSegmentMap.each do |key, value|
+            label
+              - gknn_cds_checked = [value].flatten.all? { |value| value.in?(@item.gknn_cds) } if @item.gknn_cds.present?
+              = check_box_tag 'news[gknn_cds][]', value, gknn_cds_checked, class:'gknn-cd'
+              span = key
+      li
+        label 画像
+        = file_field_tag('news_photo[image]', id: 'upload_file')
+        - if (image_url = @item.news_photo&.resource_url)
+          div.imagePreview
+            img[src="#{image_url}" id='preview']
+      li style="margin-top:5px;"
+        label id="students" 配信対象人数：XXX人
+  fieldset.buttons
+    ol
+      - build_save_options.each do |key, value, special|
+        - message = Typus::I18n.t(value)
+        - options = { name: key, onclick: 'Typus.setConfirmUnload(false);', 'data-disable-with' => message }
+        li= submit_tag message, options
+  javascript:
+    $(function() {
+      // preview of selected image
+      $('#upload_file').change(
+        function() {
+          if (!this.files.length) {
+            return;
+          }
+          var file = $(this).prop('files')[0];
+          var fr = new FileReader();
+          fr.onload = function() {
+            $('#preview').attr('src', fr.result).css('display', 'inline');
+          }
+          fr.readAsDataURL(file);
+        }
+      );
+      // Prevent submit by enter key
+      $("input:not(.allow_submit), select:not(.allow_submit)").on("keypress", function() {
+        return event.which !== 13;
+      });
+    });
+    var city_codes = [];
+    var member_types_checked = [];
+    var gknn_cds_checked = [];
+    student_count = function() {
+      params = { news: { gknn_cds: gknn_cds_checked, member_types: member_types_checked, prefecture_codes: city_codes } }
+      $.ajax({
+        type:"GET",
+        url:"/admin/students/student_ids",
+        dataType:"json",
+        data: params,
+        success:function(result){
+          $('#students').text('配信対象人数：' + result.length +'人');
+        }
+      });
+    };
+    update_city_codes = function() {
+      city_codes = [];
+      selected_cities = $('#selected-cities li')
+      for(i = 0; i < selected_cities.length; i++){
+        city_codes.push(selected_cities[i].id)
+      }
+      $('#prefecture-codes-param').val(city_codes);
+    };
+    update_gknn_cds = function() {
+      gknn_cds_checked = [];
+      var gknn_cds = document.getElementsByClassName('gknn-cd');
+      student_grade_size = gknn_cds.length;
+      for (i = 0; i < student_grade_size; i++) {
+        if(gknn_cds[i].checked === true) {
+          gknn_cds_checked = gknn_cds_checked.concat(gknn_cds[i].value.split(' '));
+        }
+      }
+    }
+    update_member_types = function() {
+      member_types_checked = [];
+      var member_types = document.getElementsByClassName("member-type");
+      member_types_size = member_types.length;
+      for (i = 0; i < member_types_size; i++) {
+        if(member_types[i].checked === true) {
+          member_types_checked.push(member_types[i].value)
+        }
+      }
+    }
+    load_number_student = function() {
+      update_city_codes();
+      update_member_types();
+      update_gknn_cds();
+      student_count();
+    }
+    load_number_student();
+    $('#select-city').on('change', function() {
+      city_code = document.getElementById("select-city").value
+      if(!city_codes.includes(city_code)) {
+        city_name = $("#select-city").find(':selected').text();
+        if(city_code > 0) {
+          $('#selected-cities').append('<li id = ' + city_code + '>' + city_name + '<span>x</span></li>')
+          update_city_codes();
+          student_count();
+        }
+      }
+    });
+    $('#selected-cities').on('click','span',function(){
+       index = $('#selected-cities span').index(this);
+       city_codes.splice(index, 1);
+       $('#selected-cities li').eq(index).remove();
+       update_city_codes();
+       student_count();
+    });
+    $('.member-type').on('change', function() {
+      update_member_types();
+      student_count();
+    });
+    $('.gknn-cd').on('change', function() {
+      update_gknn_cds();
+      student_count();
+    });
+  scss:
+    .member-type-boxes, .students-grade {
+      label {
+        width: 120px;
+        display: inline-block;
+        font-weight: normal;
+      }
+      span {
+        margin-left: 5px;
+      }
+    }
+    #selected-cities {
+      li {
+        padding-left: 5px;
+        width: 65px;
+        display: inline-block;
+        margin: 1px 1px;
+        background-color: #56a3d5;
+        border-radius: 3px;
+        color: #fff;
+        span {
+          border-left: solid 1px #276f9e;
+          padding: 0 3px;
+          float: right;
+          cursor: pointer;
+        }
+      }
+    }

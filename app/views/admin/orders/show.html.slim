@@ -1,0 +1,103 @@
+- page_title = Typus::I18n.t("Show %{resource}", :resource => @resource.model_name.human)
+- admin_title(page_title)
+- line_items = @item.line_items
+- parent = (@item.orderable.class == Student) ? @item.orderable.parent : @item.orderable
+- line_item_fields = { product_name: :string, product_point: :integer, product_category: :string, product_subject_name: :string, product_subject_type: :string, product_school: :integer, product_year: :integer, schoolbook_name: :string }
+- @resource_actions = [["Show", {:action=>"show"}]]
+- content_for :main_grid do
+  h2
+    = page_title
+  = admin_display_flash_message
+  = render 'show'
+  dl
+    - build_display(@item, fields).each do |attribute, type|
+      dt
+        = attribute
+      dd
+        = type
+    dt
+      | 購入者
+    dd
+      = @item.orderable.full_name
+
+    dt
+      | 購入商品(送料含む)
+    dd
+      table
+        thead
+          tr
+            th 名前
+            th ポイント
+            th 数量
+            th カテゴリ
+            th 科目名
+            th コース
+            th 学校
+            th 学年
+        tbody
+          - @item.line_items.each do |item|
+            tr[class='"#{cycle('even', 'odd')}"' id='"#{dom_id(item)}"']
+            - table_fields_for_line_items(item).each_with_index do |field, index|
+              td
+                = field
+    dt
+      | 送付先住所
+      br
+      br
+    dd
+      = "〒#{parent.human_zip}"
+      br
+      br
+      - if parent.domestic?
+        = "#{JpPrefecture::Prefecture.find(parent.prefecture_code).try(:name)} #{parent.city} #{parent.address1}"
+        br
+        = parent.address2
+      - else
+        = parent.foreign_address
+  - if @admin_user.role.in?(["telephone_communicator", "admin"])
+    - if @item.must_set_english_schoolbook_code? && !@item.english_schoolbook_code
+      h2 教科書設定
+      = form_tag controller: "/admin/orders", action: "unsettle" do
+        = hidden_field_tag :id, @item.id
+        = select_tag "english_schoolbook_code", options_for_select(Settings.english_schoolbook_code.to_hash),include_blank: true, class: "typus__select__schoolbook_code"
+        = submit_tag "教科書を設定し、発送可にする", data: {confirm: "教科書を設定し、発送可にしてもよろしいでしょうか？"}, class: "typus__button__ok", id: "schoolbook_settings_button", disabled: true
+        javascript:
+          $(function(){
+            $("#english_schoolbook_code").change(function(){
+              if($(this).val() != ""){
+                $("#schoolbook_settings_button").prop("disabled", false);
+              } else {
+                $("#schoolbook_settings_button").prop("disabled", true);
+              }
+            }).change();
+          });
+    - elsif @item.state == "ordered"
+      = form_tag controller: "/admin/orders", action: "unsettle" do
+        = hidden_field_tag :id, @item.id
+        = submit_tag "発送可にする", data: { confirm: "発送可にしてもよろしいでしょうか？" }, class: "typus__button__ok"
+    - if @item.state == "unsettled"
+      h2 注文の状態を変える
+      = form_tag controller: "/admin/orders", action: "return_ordered" do
+        = hidden_field_tag :id, @item.id
+        = submit_tag "発送不可にする", data: { confirm: "発送不可にしてもよろしいでしょうか？" }, class: "typus__button__ok"
+  - elsif @admin_user.role.in?(["shipping_manager", "admin"])
+    - if @item.state == "unsettled"
+      h2 注文の状態を変える
+      = form_tag controller: "/admin/orders", action: "settle" do
+        = hidden_field_tag :id, @item.id
+        = submit_tag "発送済みにする", data: { confirm: "発送済にしてもよろしいでしょうか？" }, class: "typus__button__ok"
+    - if @item.state == "settled"
+      h2 注文の状態を変える
+      = form_tag controller: "/admin/orders", action: "return_unsettled" do
+        = hidden_field_tag :id, @item.id
+        = submit_tag "発送可に戻す", data: { confirm: "発送可に戻してもよろしいでしょうか？" }, class: "typus__button__ok"
+  - if @admin_user.role.in?(%w(admin telephone_communicator)) && @item.can_cancel?
+      h2 注文をキャンセルする
+      = form_tag controller: "/admin/orders", action: "cancel" do
+        = hidden_field_tag :id, @item.id
+        = submit_tag "キャンセルする", data: { confirm: "キャンセルしてもよろしいでしょうか？" }, class: "typus__button__cancel"
+
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

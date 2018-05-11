@@ -1,0 +1,52 @@
+.bl-container {
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 50px;
+  background-color: #eeeeee;
+  min-height: 100vh;
+  min-width: 1000px;
+  &.is-static {
+    padding-bottom: 0;
+  }
+}
+
+//fixme:取り急ぎフォントサイズの変数使ってない
+.is-sp {
+  .page-static {
+    padding: 0 50px 50px;
+    .top-description {
+      font-size: 28px;
+    }
+    .top-heading {
+      font-size: 48px;
+    }
+    .content-heading {
+      font-size: 40px;
+    }
+    .content-text {
+      font-size: 38px;
+    }
+    .content-subheading {
+      font-size: 38px;
+    }
+  }
+  &.is-tablet {
+    .page-static {
+      .top-description {
+        font-size: 14px;
+      } 
+      .top-heading {
+        font-size: 22px;
+      }
+      .content-heading {
+        font-size: 16px;
+      }
+      .content-text {
+        font-size: 16px;
+      }
+      .content-subheading {
+        font-size: 16px;
+      }
+    }
+  }
+}

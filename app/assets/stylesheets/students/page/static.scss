@@ -1,0 +1,62 @@
+// 利用規約・プライバシーポリシー・特商法
+.page-static {
+  background-color: $color-white;
+  padding: 0 110px 50px;
+  margin-bottom: -50px;
+  .top {
+    max-width: $width-max-content;
+    margin: 0 auto;
+    padding: 30px;
+    &-heading {
+      font-size: $font-size-60;
+      text-align: center;
+    }
+    &-description {
+      margin-top: 15px;
+      font-size: $font-size-20;
+      text-align: center;
+    }
+    border-bottom: 1px solid $color-border-gray;
+  }
+  .content {
+    max-width: $width-max-content;
+    margin: 0 auto 30px;
+    line-height: 1.5;
+    &-heading {
+      margin-top: 35px;
+      font-size: $font-size-40;
+    } 
+    &-text {
+      margin-top: 10px;
+      ol {
+        li {
+          list-style: decimal;
+        }
+      }
+    }
+  }
+  .table {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    &-row {
+      display: table;
+      width: 100%;
+      border-bottom: 1px solid $color-border-gray;
+      &:first-child {
+        border-top: 1px solid $color-border-gray;
+        font-weight: bold;
+      }
+      &-column {
+        width: 50%;
+        display: table-cell;
+        border-right: 1px solid $color-border-gray;
+        vertical-align: middle;
+        padding: 5px;
+        &:first-child {
+          border-left: 1px solid $color-border-gray;
+        }
+      }
+    }
+  }
+}

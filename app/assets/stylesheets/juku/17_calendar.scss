@@ -1,0 +1,57 @@
+.Calendar__container {
+  position: relative;
+  width: 300px;
+  display: inline-block;
+  .Calendar {
+    display: none; 
+    position: absolute;
+    left: 24px;
+    top: 50px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 100;
+    box-shadow: 3px 3px rgba(0,0,0,0.1);
+    &.curriculum {
+      left: 0;
+      top: 0;
+    }
+    &.simulator {
+      left: -214px;
+      top: 15px;
+    }
+    &.active {
+      display: block;
+    }
+    .Week.select {
+      &:hover {
+        .Day-inner {
+          background-color: #B2DAFF;
+        }
+      }
+    }
+    .Day-inner {
+      width: 40px; 
+      padding: 7px 10px;
+      &:hover {
+        background-color: #B2DAFF; 
+      }
+    }
+    .Day {
+      text-align: center;
+      &.other-month {
+        button.Day-inner {
+          color: #eee;
+        }
+      }
+    }
+    .month-header {
+      font-weight: bold;
+      th {
+        padding: 12px 0;
+      }
+      button {
+        font-weight: bold;
+      }
+    }
+  }
+}

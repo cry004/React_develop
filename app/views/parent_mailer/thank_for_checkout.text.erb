@@ -1,0 +1,32 @@
+<%= "#{@parent.family_name}#{@parent.first_name} 様" %>
+
+Try IT をご利用いただきありがとうございます。
+下記の商品をご購入いただきました。
+
+■商品情報
+<% shipping_item = nil %>
+<% @order.line_items.each do |line_item| %>
+  <% if line_item.product.category == 'shipping_fee' %>
+    <% shipping_item = line_item %>
+    <% next %>
+  <% end %>
+  <%= "#{line_item.product.name}　　数量： #{line_item.quantity},　　"\
+      "#{number_to_jpy((line_item.point * Settings.tax_rate).round)}"\
+      " 円（税込）" %>
+<% end %>
+<% if shipping_item %>
+  <%= "#{shipping_item.product.name} "\
+      "#{number_to_jpy((shipping_item.point * Settings.tax_rate).round)}"\
+      " 円（税込）" %>
+<% end %>
+-----------------------------------------
+<%= "合計 #{number_to_jpy((@order.total_point * Settings.tax_rate).round)}"\
+    " 円（税込）" %>　　　　　　　　
+
+英語（テスト対策編）をご購入の場合は、ご登録の学校情報に基づき、
+その中学校で採択されている教科書を自動的に選択して送付いたします。
+国私立中学校の場合は、事務局より教科書確認のご連絡をいたします。
+
+お申し込み受付後、順次商品の発送を行っております。
+本メールの到着から２週間経っても商品が到着しない場合は、
+大変お手数ですが下記までお問合せください。

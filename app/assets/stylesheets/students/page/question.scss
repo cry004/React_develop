@@ -1,0 +1,44 @@
+.page-question {
+  margin: 20px;
+  .el-button {
+    margin: 40px auto;
+  }
+  .message {
+    margin: 20px auto;
+    max-width: 1060px;
+    width: 96%;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    padding: 14px 12px;
+    &-heading {
+      margin-left: 10px;
+      font-size: $font-size-50;
+      font-weight: bold;
+      line-height: 40px;
+    }
+    &-date {
+      font-size: $font-size-20;
+      color: $color-text-gray;
+      line-height: 40px;
+    }
+    &-text {
+      margin-top: 16px;
+      margin-left: 50px;
+      font-size: $font-size-30;
+      line-height: 1.5;
+    }
+    &-image {
+      margin: 23px 50px 0 50px;
+      img {
+        max-width: 100%;
+      }
+    }
+    &-auto-replay {
+      margin-top: 16px;
+      font-size: $font-size-20;
+      color: $color-text-gray;
+    }
+  }
+
+}

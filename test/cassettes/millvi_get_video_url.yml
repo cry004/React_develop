@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cc.miovp.com/get_info?accesskey=v1,try-it,1455269885,3525ea5d3c284a865f5d32a8236a4eef65c081c0&host=try-it&id_contents=111&id_vhost=1&useragent=&videotype=video
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 12 Feb 2016 06:38:06 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.2.24 (Unix) mod_ssl/2.2.24 OpenSSL/1.0.0-fips
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '847'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url":"https:\/\/d1rub8srrhah9l.cloudfront.net\/http\/655-1-77-3-2-mp4-h264-300-416x234-1426880621-2004525879.mp4?Expires=1455269885&Signature=H7yF0gU6cQQ8iiixvF2S8XpGTGZe04zos2~wEDty-B7-r0YvrZ051w7e6vnROfhFIPJ6UBbQUAa2C3TOeEdlaz4JWhcBOyZcV1pHOquyu2mgINWsGNgM~U0J1xlkHcMTDnQJjU3~~3p1NqE2r8~UBUcTwWEHKvc8HU8wHlZ3keSI-njl9oNJjtwF73lc9gW7uVIh1wpYohaHtR742iN6m13PhtI~~LMIL7pmAoAGaQrl-kf8gyEdumt-xVJo4QoFAT6KRYMlfprgdDdxMXSMowDqVYZMjBIFZ7wFt49S9AUXQZxkXx0BT7X2rboMyNY-YfwF0ssKeJniT~X29xX8sw__&Key-Pair-Id=APKAIWTZBN2CGTQETQ7Q","thumbnail_url":"https:\/\/dc.miovp.com\/thumbnail\/655\/1\/77\/4","original_width":"1280","original_height":"720","param_chapter":"","param_subtitle":"","param_annotation":"","param_ad":"","param_basic":{"title":"eng_test_TS_1-05.mp4","description":null,"id_contents":"111","type":"video","category":"video"},"status":true}'
+    http_version: 
+  recorded_at: Fri, 12 Feb 2016 06:38:06 GMT
+- request:
+    method: get
+    uri: https://cc.miovp.com/get_info?accesskey=v1,try-it,1455269885,3525ea5d3c284a865f5d32a8236a4eef65c081c0&host=try-it&id_contents=111&id_vhost=1&useragent=&videotype=video
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 12 Feb 2016 06:38:06 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.2.24 (Unix) mod_ssl/2.2.24 OpenSSL/1.0.0-fips
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '862'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url":"https:\/\/d1rub8srrhah9l.cloudfront.net\/http\/655-1-810-3-2-mp4-h264-300-416x234-1427387951-1071125424.mp4?Expires=1455269886&Signature=o0x61UJv~4hX-xGnQzVOItIjZrlBsOSx8sS~fCkpm7Nvfjn1YK2MqnLsClVRKazrjTjyGbQiDIU-aR~xTtldD1MoUL8Rq86vo61UR7SZNs0xFpBbWvRf~AWJnRb7CifE6JV7ByXy13Kx69~gE5o9swcLPTIok62izC8QUdkRXiKOKboaJ3Y8es2llpNcqBtS9XZn7y0L-4AN7BVhnzEMkjJj0HiRGahMCTId9NkqkdznD9fiE6ApcxvUSyRNHh64ABlChklIIaVBuYq~7GUevaG0oqCOBrEhKU6AJyPIXKuSZZOXEYuFBz7NFqS43JIyajEsjT3FwVr2OBH~ayMHaQ__&Key-Pair-Id=APKAIWTZBN2CGTQETQ7Q","thumbnail_url":"https:\/\/dc.miovp.com\/thumbnail\/655\/1\/810\/1","original_width":"1280","original_height":"720","param_chapter":"","param_subtitle":"","param_annotation":"","param_ad":"","param_basic":{"title":"double_speed_eng_test_TS_1-05.mp4","description":null,"id_contents":"844","type":"video","category":"video"},"status":true}'
+    http_version: 
+  recorded_at: Fri, 12 Feb 2016 06:38:07 GMT
+recorded_with: VCR 3.0.1

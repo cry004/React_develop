@@ -1,0 +1,61 @@
+.page-studystatus {
+  .subject {
+    display: flex;
+    justify-content: center;
+    &-column {
+      min-width: 400px;
+      & + .subject-column {
+        margin-left: 20px;
+      }
+      &-heading {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: $font-size-60;
+        color: $color-text-gray;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+    .card {
+      margin-top: 25px;
+      width: 415px;
+      height: 160px;
+      padding: 15px;
+      background-color: $color-white;
+      border-radius: 4px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      .el-graph {
+        margin-left: 250px;
+      }
+      &-subject {
+        font-size: $font-size-20;
+        color: $color-text-gray;
+      }
+      &-cource {
+        margin-top: 10px;
+        font-size: $font-size-60;
+        font-weight: bold;
+      }
+      &-trophy {
+        margin-top: 10px;
+        padding-left: 30px;
+        background-image: image-url('students/common/icon/trophy-gray.png');
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: 0 4px;
+        color: $color-text-gray;
+        font-size: $font-size-20;
+        span {
+          font-size: $font-size-60;
+        }
+      }
+      &-link {
+        margin-top: 25px;
+        display: block;
+        font-size: $font-size-10;
+        color: $color-text-gray;
+      }
+    }
+  }
+}

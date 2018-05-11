@@ -1,0 +1,116 @@
+.page-search {
+  .el-button {
+    margin: 20px auto;
+  }
+  .container {
+    margin: 20px 0 0 20px;
+    display: flex;
+    justify-content: center;
+    &-inner {
+      max-width: 1252px;
+      width: 100%;
+    }
+  }
+  .heading {
+    font-size: $font-size-60;
+    color: $color-text-gray;
+  }
+  .subheading {
+    margin: 15px 0;
+    font-size: $font-size-40;
+    color: $color-text-gray;
+    font-weight: bold;
+    line-height: 20px;
+  }
+  .count {
+    font-size: $font-size-20;
+    line-height: 20px;
+    color: $color-text-gray;
+    margin: 15px 0;
+  }
+  .subject {
+    font-size: $font-size-30;
+  }
+  .videolist {
+    width: calc(100% - 250px - 20px)
+  }
+  .units {
+    margin: 10px 0 30px;
+  }
+  .unit {
+    margin-top: 10px;
+    width: 49.5%;
+    padding: 10px 30px;
+    background-color: $color-white;
+    float: left;
+    background-color: #ffffff;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    &:nth-child(2n) {
+      float: right;
+      margin-left: 1%;
+    }
+    &-subject {
+      font-size: $font-size-20;
+    }
+    &-name {
+      margin-top: 5px;
+      font-size: $font-size-30;
+    }
+  }
+  .cards {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -15px;
+  }
+  .menus {
+    width: 232px;
+    margin-right: 15px;
+  }
+  .menu {
+    width: 100%;
+    background-color: $color-white;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    & + .menu {
+      margin-top: 20px;
+    }
+    &-head {
+      display: block;
+      padding: 13px;
+      border-bottom: 1px solid $color-border-gray;
+      font-size: $font-size-30;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    &-list {
+      display: block;
+      padding: 10px 13px 10px 45px;
+      color: $color-text-black;
+      font-size: $font-size-30;
+      background-image: image-url('students/common/icon/trophy-gray.png');
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      background-position: 13px center;
+      line-height: 1.6;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      &.is-done {
+        background-image: image-url('students/common/icon/trophy.png');
+      }
+      &:hover,
+      &.is-active {
+        background-color: $color-bg-light-gray;
+      }
+      &.is-all {
+        background-image: none;
+        padding: 10px;
+        font-weight: bold;
+      }
+    }
+  }
+}

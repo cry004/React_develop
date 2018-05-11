@@ -1,0 +1,137 @@
+.bl-mystatus {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  padding: 0 10px;
+  background-image: image-url('students/common/bg3.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  z-index: 1;
+  &.is-afternoon {
+    background-image: image-url('students/common/bg1.png');
+  }
+  &.is-evening {
+    background-image: image-url('students/common/bg2.png');
+  }
+  .el-icon {
+    position: relative;
+  }
+  &-icon {
+    &-select {
+      position: absolute;
+      top: 0;
+      left: 2px;
+      width: 77px;
+      height: 77px;
+      background-color: rgba(0, 0, 0, 0.6);
+      font-size: $font-size-20;
+      color: $color-white;
+      border-radius: 38px;
+      text-align: center;
+      padding-top: 23px;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+  }
+  &-profile {
+    line-height: 2;
+    margin-left: 20px;
+    min-width: 240px;
+    &-name {
+      font-size: $font-size-60;
+      span {
+        max-width: 185px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    &-input {
+      width: 300px;
+      height: 30px;
+      margin-bottom: 5px;
+      line-height: 30px;
+      padding: 0 5px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+    }
+    &-detail {
+      font-size: $font-size-20;
+      &-school {
+        &:after {
+          content: "/";
+        }
+        &:last-child {
+          &:after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+  &-status {
+    margin-left: 60px;
+    &-trophy,
+    &-done {
+      display: inline-block;
+      padding-left: 27px;
+      font-size: $font-size-60;
+      line-height: 1;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: 0 2px;
+    }
+    &-trophy {
+      background-image: image-url('students/common/icon/trophy-white.png');
+    }
+    &-done {
+      margin-left: 17px;
+      background-image: image-url('students/common/icon/check-white.png');
+    }
+    &-time {
+      margin-top: 10px;
+      font-size: $font-size-30;
+      span {
+        font-size: $font-size-60;
+        margin: 0 10px;
+      }
+    }
+  }
+  &-level {
+    margin-left: 70px;
+    &-rank {
+      text-align: right;
+      font-size: $font-size-40;
+      span {
+        font-size: $font-size-60;
+        margin-left: 10px;
+      }
+    }
+    &-graph {
+      margin-top: 10px;
+      position: relative;
+      width: 280px;
+      height: 18px;
+      border-radius: 9px;
+      background-color: rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+      &-inner {
+        position: absolute;
+        height: 100%;
+        background-color: $color-blue;
+      }
+    }
+    &-next {
+      margin-top: 10px;
+      color: $color-blue;
+      font-size: $font-size-20;
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+}

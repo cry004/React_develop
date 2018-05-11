@@ -1,0 +1,118 @@
+.bl-tab {
+  width: 100%;
+  height: 54px;
+  background-color: $color-white;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  &-list {
+    position: relative;
+    cursor: pointer;
+    a {
+      font-size: $font-size-40;
+      height: 100%;
+      line-height: 1.8;
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 0;
+      &.is-active {
+        border-bottom: 4px solid $color-blue;
+      }
+    }
+    li a {
+      line-height: 1.4;
+      padding: 10px 0;
+      font-size: $font-size-30;
+      margin: 0;
+    }
+    &.is-english,
+    &.is-mathematics,
+    &.is-science,
+    &.is-social_studies,
+    &.is-japanese,
+    &.is-ranking {
+      position: relative;
+      cursor: default;
+      padding-right: 12px;
+      &:after {
+        position: absolute;
+        top: 25px;
+        right: 5px;
+        content: "";
+        width: 0;
+        height: 0;
+        border: 4px solid transparent;
+        border-top: 4px solid $color-gray;
+      }
+      &.is-english,
+      &.is-mathematics,
+      &.is-science,
+      &.is-social_studies,
+      &.is-japanese {
+        > a {
+          font-weight: bold;
+        }
+      }
+    }
+    &.is-english {
+      > a {
+        color: $color-english;
+      }
+    }
+    &.is-math,
+    &.is-mathematics {
+      > a {
+        color: $color-math;
+      }
+    }
+    &.is-science {
+      > a {
+        color: $color-science;
+      }
+    }
+    &.is-society,
+    &.is-social_studies
+     {
+      > a {
+        color: $color-society;
+      }
+    }
+    &.is-japanese {
+      > a {
+        color: $color-japanese;
+      }
+    }
+    &:hover {
+      > a {
+        border-bottom: 4px solid $color-blue;
+      }
+      .bl-tab-list-subject {
+        display: block;
+      }
+    }
+    &-subject {
+      display: none;
+      width: 356px;
+      max-height: calc(100vh - 150px);
+      overflow-y: scroll;
+      position: absolute;
+      top: 54px;
+      left: 50%;
+      margin-left: calc(350px / -2);
+      padding: 0;
+      background-color: $color-white;
+      border: 1px solid $color-light-gray;
+      border-radius: 4px;
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+      font-size: $font-size-30;
+      list-style: none;
+      li {
+        cursor: pointer;
+        padding: 0 10px;
+        &:hover {
+          background-color: $color-bg-gray;
+        }
+      }
+    }
+  }
+}

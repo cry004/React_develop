@@ -1,0 +1,17 @@
+- page_title = Typus::I18n.t("Show %{resource}", :resource => @resource.model_name.human)
+- admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+  = admin_display_flash_message
+  = render 'show'
+  dl
+    - build_display(@item, fields).each do |attribute, type|
+      dt
+        = attribute
+      dd
+        = type
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

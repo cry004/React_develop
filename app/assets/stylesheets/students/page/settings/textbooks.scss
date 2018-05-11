@@ -1,0 +1,84 @@
+.page-settings-textbooks {
+  margin: 20px;
+  .heading {
+    font-size: $font-size-60;
+    color: $color-text-gray;
+  }
+  .cards {
+    display:flex;
+    flex-wrap:wrap;
+    align-items: baseline;
+    margin-left: -20px;
+  }
+  .card {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 400px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    &-image {
+      width: 100%;
+      height: 170px;
+      background-size: cover;
+      @each $subject in $subjects {
+        &.is-#{$subject} {
+          background-image: image-url('students/page/settings/textbooks/#{$subject}.png');
+        }
+      }
+      &.is-civics {
+        background-image: image-url('students/page/settings/textbooks/civics.png');
+      }
+      &.is-geography {
+        background-image: image-url('students/page/settings/textbooks/geography.png');
+      }
+      &.is-history {
+        background-image: image-url('students/page/settings/textbooks/history.png');
+      }
+      &.is-mathematics {
+        background-image: image-url('students/page/settings/textbooks/mathematics.png');
+      }
+    }
+    &-list {
+      margin-top: -10px;
+      background-color: $color-white;
+      li {
+        position: relative;
+        line-height: 1.7;
+        font-size: $font-size-30;
+        transition: background-color 0.15s ease;
+        &:hover {
+          background-color: $color-bg-light-gray;
+        }
+        input {
+          z-index: 1;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+          &:checked + label {
+            background-color: $color-bg-light-gray;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 16px;
+              left: 15px;
+              width: 16px;
+              height: 12px;
+              background-size: cover;
+              background-image: image-url('students/common/icon/check-blue.png');
+            }
+          }
+        }
+        label {
+          padding: 8px 40px;
+          z-index: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+}

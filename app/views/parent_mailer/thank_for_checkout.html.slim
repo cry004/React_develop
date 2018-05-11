@@ -1,0 +1,40 @@
+div
+  = "#{@parent.family_name}#{@parent.first_name} 様"
+  br
+  br
+div
+  | Try IT をご利用いただきありがとうございます。
+  br
+  | 下記の商品をご購入いただきました。
+  br
+  br
+div
+  | ■商品情報
+  br
+  - @order.line_items.each do |line_item|
+    = line_item.product.name
+    - unless line_item.product.category == 'shipping_fee'
+      | 　　数量：
+      = line_item.quantity
+    | 　　
+    = number_to_jpy((line_item.point * Settings.tax_rate).round)
+    | 円（税込）
+    br
+  | -----------------------------------------
+  br
+  | 合計　　　　　　　　
+  = number_to_jpy((@order.total_point * Settings.tax_rate).round)
+  | 円（税込）
+  br
+  br
+div
+  | 中学版 英語（テスト対策編）をご購入の場合は、事務局より教科書確認のご連絡をいたします。
+  br
+  br
+div
+  | お申し込み受付後、商品発送の準備が整い次第順次商品の発送を行っております。
+  br
+  | 本メールの到着から２週間経っても商品が到着しない場合は、
+  br
+  | 大変お手数ですが下記までお問合せください。
+  br

@@ -1,0 +1,24 @@
+- page_title = "プロフィールを編集"
+- admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  = render 'edit'
+  - locals = { :options => params.dup.cleanup.merge(:action => 'update') }
+  .typus__pointRequest
+    - if @admin_user.kys_cd.present?
+      .typus__pointRequest__available
+        h3 ポイント換金リクエスト送信可能です
+    - else
+      .typus__pointRequest__unavailable
+        h3
+          | 登録情報に不足または不整合があるためポイント換金リクエストできません。
+          br
+          | お問い合わせ先はこちら：
+          = Settings.teacher_app_contact_tel
+  = render '/admin/admin_users/edit_form', locals
+.grid_8.no_sidebar
+  = yield :main_grid

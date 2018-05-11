@@ -1,0 +1,226 @@
+.page-create-question {
+  .button {
+    margin-top: 40px;
+    justify-content: center;
+    & + .button {
+      margin-left: 2%;
+    }
+  }
+  .point {
+    width: 100%;
+    background-color: $color-white;
+    padding-top: 20px;
+    &-inner {
+      margin: 0 auto;
+      max-width: 740px;
+      &-teacher {
+        width: 110px;
+        height: 120px;
+        background-image: image-url('students/common/trysan.png');
+        background-size: cover;
+      }
+      &-balloon {
+        margin-top: 25px;
+        margin-left: 30px;
+        position: relative;
+        background-color: $color-bg-gray;
+        font-size: $font-size-20;
+        padding: 8px;
+        border-radius: 4px;
+        span {
+          font-weight: bold;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          top: 50%; 
+          left: -8px;
+          margin-top: -9px;
+          display: block;
+          width: 0px;
+          height: 0px;
+          border-style: solid;
+          border-width: 9px 9px 9px 0;
+          border-color: transparent $color-bg-gray transparent transparent;
+        }
+      }
+      &-current {
+        margin-top: 20px;
+        font-size: $font-size-30;
+        font-weight: bold;
+        span {
+          font-size: $font-size-70;
+          margin: 0 5px;
+        }
+      }
+      &-howto {
+        display: inline-block;
+        margin-top: 10px;
+        color: $color-text-gray;
+        font-size: $font-size-20;
+        text-decoration: underline;
+        line-height: 1.2;
+        cursor: pointer;
+        transition: color 0.15s ease;
+        &:hover {
+          color: $color-gray-hover;
+        }
+      }
+    }
+  }
+  .heading {
+    font-size: $font-size-60;
+    font-weight: bold;
+    color: $color-text-gray;
+    line-height: 1.4;
+  }
+  .description {
+    margin-top: 15px;
+    color: $color-text-gray
+  }
+  .container {
+    max-width: $width-max-content;
+    margin: 20px auto;
+    &-heading {
+      min-height: 70px;
+      margin-bottom: 25px;
+    }
+    &-button {
+      display: flex;
+      justify-content: center;
+    }
+    &-photo {
+      width: 49%;
+      &-input {
+        position: relative;
+        width: 100%;
+        height: 362px;
+        background-color: $color-white;
+        transition: background-color 0.15s ease;
+        &:hover {
+          background-color: $color-white-hover;
+        }
+        &-image {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          border-radius: 4px;
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+          &-input {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            font-size: 0;
+          }
+          &-prev {
+            position: absolute;
+            width: calc(100% - 20px);
+            height: 342px;
+            top: 10px;
+            left: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: auto;
+              height: auto;
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+          &:before {
+            opacity: 1;
+            content: "";
+            position: absolute; 
+            top: 9px;
+            left: 9px;
+            width: calc(100% - 20px);
+            height: 342px;
+            border: 1px solid $color-border-gray;
+            background-image: image-url('students/page/create_question/camera.png');
+            background-size: 141px 51px;
+            background-position: center center;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+    &-text {
+      width: 49%;
+      margin-left: 1%;
+      &-textarea {
+        padding: 10px;
+        width: 100%;
+        height: 362px;
+        border-radius: 4px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+        background-color: $color-white;
+        border: none;
+      }
+    }
+  }
+  .subjects {
+    display:flex;
+    flex-wrap:wrap;
+    margin-left: -15px;
+    margin-bottom: 30px;
+  }
+  .subject {
+    position: relative;
+    display: inline-block;
+    width: 236px;
+    height: 134px;
+    background-size: cover;
+    font-size: 0;
+    margin-top: 20px;
+    margin-left: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    @each $subject in $subjects {
+      &.is-#{$subject} {
+        background-image: image-url('students/page/create_question/#{$subject}.png');
+      }
+    }
+    &.is-mathematics {
+      background-image: image-url('students/page/create_question/math.png');
+    }
+    &.is-social_studies {
+      background-image: image-url('students/page/create_question/society.png');
+    }
+    label {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      appearance: none;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      transition: background-color 0.15s ease;
+      &:hover {
+        background-color: rgba(0, 0, 0, .6);
+      }
+    }
+    input {
+      opacity: 0;
+      background-image: image-url('students/page/create_question/selected.png'); // for preload
+      &:checked {
+        & + label {
+          background-image: image-url('students/page/create_question/selected.png');
+          &:hover {
+            background-color: initial;
+          }
+        }
+      }
+    }
+  }
+}

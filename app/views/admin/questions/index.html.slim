@@ -1,0 +1,22 @@
+- content_for :main_grid do
+  = admin_display_flash_message
+  = render "admin/shared/user_profile"
+  = render "admin/questions/shared/predefined_filters"
+  = render "admin/questions/shared/working_filters"
+  = render "admin/shared/modal" if @admin_user.role == "answerer" && flash["notice"] == "ログインしました"
+  - if @items.any?
+    = render_table
+    = paginate @items
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+.typus__main__content
+  = yield :main_grid
+
+javascript:
+  $(function(){
+    var query = "";
+    var action = location.pathname.split("/")[3];
+    query = (action == "index") ? $("ul.predefined_filters li:first a").attr("id") : action
+    $("#" + query).css("opacity", "0.4")
+  });

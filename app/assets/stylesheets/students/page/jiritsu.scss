@@ -1,0 +1,35 @@
+.page-jiritsu {
+  .el-button {
+    margin: 20px auto 0;
+  }
+  .el-button-gray {
+    width: 46%;
+    margin-top: 10px;
+    &:first-child {
+      margin-right: 8%;
+    }
+    &:only-child {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  .heading {
+    margin-bottom: 40px;
+    font-size: $font-size-60;
+    color: $color-text-gray;
+  }
+  .container {
+    margin: 20px;
+  }
+  .date {
+    font-size: $font-size-30;
+    color: $color-text-gray;
+  }
+  .cards {
+    margin-left: -15px;
+    margin-bottom: 20px;
+  }
+  .card {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,71 @@
+.page-videolist {
+  .el-button {
+    margin: 20px auto;
+  }
+
+  .container {
+    margin: 20px;
+  }
+  .videos {
+    position: relative;
+    margin-left: 20px;
+    width: calc(100% - 232px - 20px);
+    &-title {
+      font-size: $font-size-60;
+      color: $color-text-gray;
+    }
+    &-setting {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: $font-size-20;
+      color: $color-text-gray; 
+    }
+  }
+  .menu {
+    width: 232px;
+    background-color: $color-white;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    &-head {
+      display: block;
+      padding: 13px;
+      border-bottom: 1px solid $color-border-gray;
+      font-size: $font-size-30;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      &:hover,
+      &.is-active {
+        background-color: $color-bg-light-gray;
+      }
+    }
+    &-list {
+      display: block;
+      padding: 10px 13px 10px 45px;
+      color: $color-text-black;
+      font-size: $font-size-30;
+      background-image: image-url('students/common/icon/trophy-gray.png');
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      background-position: 13px center;
+      line-height: 1.6;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      &.is-done {
+        background-image: image-url('students/common/icon/trophy.png');
+      }
+      &:hover,
+      &.is-active {
+        background-color: $color-bg-light-gray;
+      }
+    }
+  }
+  .cards {
+    margin-left: -15px;
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+}

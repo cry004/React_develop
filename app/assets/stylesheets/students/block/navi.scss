@@ -1,0 +1,12 @@
+.bl-navi {
+  position: fixed;
+  top: 66px;
+  width: 100%;
+  min-width: $width-min-content;
+  height: 54px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  z-index: 4900;
+  font-size: $font-size-30;
+  color: $color-black;
+}

@@ -1,0 +1,118 @@
+.StudentHistory {
+  .nodata {
+    background-color: #fff;
+    padding: 300px 20px;
+    text-align: center;
+  }
+  &__header {
+    display: table;
+    width: 100%;
+    min-width: 960px;
+    border-bottom: 1px solid #D1D1D1;
+    background-color: #fff;
+    position: relative;
+    margin-top: 131px;
+    &-left, &-right {
+      display: table-cell;
+      padding: 15px 20px;
+      vertical-align: middle;
+    }
+    &-left {
+      vertical-align: middle;
+    }
+    &-right {
+      text-align: right;
+      vertical-align: middle;
+    }
+    .date, .subject {
+      display: table-cell;
+      font-size: 1.2rem;
+      .calendar {
+        display: inline-block;
+        width: 150px;
+        vertical-align: middle;
+      }
+      .calender-label {
+        margin: 0 18px 0 0;
+        font-weight: bold;
+        vertical-align: middle;
+      }
+      .Calendar__container {
+        display: block;
+      }
+    }
+    .status {
+      display: inline-block;
+      text-align: right;
+      vertical-align: middle;
+      height: 41px;
+    }
+    .btns-label {
+      display: inline-block;
+      text-align: right;
+      vertical-align: middle;
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: #000;
+    }
+    .btns {
+      width: 159px;
+      display: inline-block;
+      vertical-align: middle;
+      li {
+        vertical-align: middle;
+        display: inline-block;
+        width: 41px;
+        padding-right: 12px;
+        text-align: right;
+        a {
+          cursor: pointer;
+        }
+      }
+    }
+    select.arrow-r {
+      width: 200px;
+      background-position: 180px 17px;
+      background-image: image-url("juku/icon-select-down-black.gif");
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  &__date {
+    padding: 15px 20px;
+    background-color: #eaf5ff;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 1.2rem;
+    .dates {
+      display: inline-block
+    }
+    .date {
+      font-weight: bold;
+      margin-right: 32px;
+      &.report {
+        margin-left: 1em;
+      }
+    }
+    a.link {
+      cursor: pointer;
+      color: $pink-color;
+      display: inline-block;
+      font-size: 1.4rem;
+    }
+  }
+  &__container {
+    opacity: 0;
+  }
+  .curriculum-subject {
+    width: 15%;
+  }
+  .curriculum-title {
+    width: 15%;
+  }
+  .curriculum-contents {
+    width: 100%;
+  }
+  .curriculum-info {
+    padding-left: 50px;
+  }
+}

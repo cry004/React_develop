@@ -1,0 +1,189 @@
+script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"
+script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"
+- page_title = @resource.model_name.human.pluralize
+- donload_csv_type = @admin_user.role == "admin" ? "発送可・発送不可" : "発送可"
+- admin_title(page_title)
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  - if @admin_user.role.in?(["admin", "shipping_manager"])
+    .csv_download
+      .csv_download_textbook
+        h3 CSVダウンロード
+        p
+          | 問題集購入の注文
+          = "(#{donload_csv_type})のCSVをダウンロード"
+        = form_tag controller: "/admin/orders", action: "csv_download_for_textbook", format: :csv do
+          = hidden_field_tag :type, "textbooks"
+          .input_field_datapicker
+            = label_tag :from_date, "集計開始日"
+            = text_field_tag :from_date, nil, id: "datepicker1"
+          .input_field_datapicker
+            p 〜
+          .input_field_datapicker
+            = label_tag :from_date, "集計終了日"
+            = text_field_tag :to_date, nil, id: "datepicker2"
+          = submit_tag "CSVをダウンロードする", class: "csv_download_button"
+  - if @admin_user.role == "admin"
+      .csv_download_credit_info
+        p
+          | 確定決済用の注文CSVをダウンロード(質問も含まれる。)
+        = form_tag controller: "/admin/orders", action: "csv_download_for_credit", format: :csv do
+          = hidden_field_tag :type,"credit"
+          .input_field_datapicker
+            = label_tag :from_date, "集計開始日"
+            = text_field_tag :from_date, nil, id: "datepicker3"
+          .input_field_datapicker
+            p 〜
+          .input_field_datapicker
+            = label_tag :from_date, "集計終了日"
+            = text_field_tag :to_date, nil, id: "datepicker4"
+          = submit_tag "CSVをダウンロードする", class: "csv_download_button"
+
+  h3 注文一覧
+  .typus__filter
+    h4 フィルタ
+    = label_tag "", "ステータス", class: "typus__filter__label"
+    = select_tag "status", options_for_select(@state_name_options, selected: @order_state_fileter_selected), class: "typus__filter__select"
+    = button_tag "適用", id: "filter_button"
+  .typus__search
+    .typus__search__header
+      span.typus__seach__hearder_title
+        | 検索
+      = link_to "全て表示する", "/admin/orders", class: "typus__search__header_link"
+    = select_tag "search[attribute]", options_for_select({ "注文日(yyyymmdd)" => "order_date", "保護者名(カタカナ 名前と名字の間にスペース)" => "parent_name", "メールアドレス" => "parent_email", "注文ID" => "order_id" }), prompt: "検索する項目を選択してください"
+
+    = text_field_tag "search[value]"
+    = button_tag "検索", id: "search_button"
+
+  - if @items.any?
+    - if controller.respond_to?(:bulk)
+      = build_actions { build_list(@resource, fields, @items) }
+    - elsif @admin_user.role.in?(["shipping_manager","admin", "telephone_communicator"])
+      .typus__change_state
+        h4 選択した注文を一括処理する
+        = form_tag controller: "/admin/orders", action: "batch" do
+          .typus__change_state_button
+            = select_tag "select_method", options_for_select(@select_method_options), class: "typus__filter__select", prompt: "実行する処理を選択してください"
+            = button_tag "適用", data: { confirm: "実行してもよろしいでしょうか？" }, id: "select_method_button"
+          table
+            thead
+              tr
+                th
+                  = check_box_tag "all_select_order", "", false
+                - fields.keys.each do |field|
+                  th
+                    = I18n.t "activerecord.attributes.order.#{field}"
+            - @items.each do |item|
+              tr[class='"#{cycle('even', 'odd')}"' id='"#{dom_id(item)}"']
+                td
+                  = check_box_tag "change_state_flag[#{item.id}]", true, false, { class: "change_state_flag" }
+                - table_fields_for_item(item, fields).each_with_index do |field, index|
+                  td
+                    - if index == 0
+                      = field
+                      .actions
+                        = link_to "内容を見る", "/admin/orders/show/#{item.id}"
+                    - else
+                      = field
+      javascript:
+        $(function() {
+           var query_string = getUrlVars();
+           var state_value = query_string["state"];
+
+           switch(state_value){
+             case "ordered":
+               $("#select_method").val("");
+               break;
+             case "unsettled":
+               $("#select_method").val("settle");
+               break;
+             case "settled":
+               $("#select_method").val("return_unsettled");
+               break;
+           }
+          $("#select_method").change(function(){
+            if($(this).val() != ""){
+              $("#select_method_button").prop("disabled", false);
+            } else {
+              $("#select_method_button").prop("disabled", true);
+            }
+           }).change();
+           $("#all_select_order").on("change", function(){
+             $('input.change_state_flag').prop('checked', this.checked);
+           });
+        })
+    - else
+      = build_list(@resource, fields, @items)
+    = paginate @items
+  - else
+    p
+      = Typus::I18n.t("No entries found.")
+= render "admin/shared/user_profile"
+- if @admin_user.role == "admin"
+  .grid_2
+    = build_sidebar
+  .grid_10
+    = yield :main_grid
+- else
+  .grid_12
+    = yield :main_grid
+
+javascript:
+  function getUrlVars(){
+      var vars = [], max = 0, hash = "", array = "";
+      var url = window.location.search;
+
+      hash  = url.slice(1).split('&');
+      max = hash.length;
+      for (var i = 0; i < max; i++) {
+          array = hash[i].split('=');
+          vars.push(array[0]);
+          vars[array[0]] = array[1];
+      }
+      return vars;
+  }
+  $(function() {
+    $("#datepicker1").datepicker();
+    $("#datepicker2").datepicker();
+    $("#datepicker3").datepicker();
+    $("#datepicker4").datepicker();
+
+    // フィルタで選択されたものをクエリ文字列に含める。
+    $("#filter_button").click(function(){
+      var state = $("#status").val();
+      window.location.href = ("/admin/orders?state=" + state);
+    });
+
+    // クエリ文字列に含まれているstateの値を取得して、select_tagのdefault値に設定する。
+    var query_string = getUrlVars()
+    $("#status option").filter(function(){
+      return $(this).val() == query_string["state"]
+    }).prop("selected", true);
+
+    var seach_attribute = query_string[0]
+    $("#search_attribute option").filter(function(){
+      return $(this).val() == query_string[0]
+    }).prop("selected", true);
+
+    // 検索項目が入力されないかぎりボタンはdiabled
+    $("#search_attribute").change(function(){
+      if($(this).val() != ""){
+        $("#search_button").prop("disabled", false);
+      } else {
+        $("#search_button").prop("disabled", true);
+      }
+    }).change();
+
+    // 検索ボタンが押された場合にクエリ文字列を付与して遷移する。
+    $("#search_button").click(function(){
+      var searchAttribute = $("#search_attribute").val();
+      var searchValue = $("#search_value").val();
+      window.location.href = ("/admin/orders?" + searchAttribute + "=" + searchValue);
+    });
+  });
+

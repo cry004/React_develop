@@ -1,0 +1,11 @@
+doctype html
+html lang="ja"
+  head
+    meta charset='UTF-8'
+    title Myトライコース 管理システム
+    = stylesheet_link_tag 'juku/application', media: 'all'
+    /= csrf_meta_tags
+    meta name='robots' content='noindex,nofollow,noarchive'
+  body data-env-name="#{Settings.env_name}"
+    == yield
+    = javascript_include_tag('juku/application')

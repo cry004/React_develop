@@ -1,0 +1,25 @@
+- page_title = Typus::I18n.t("Show %{resource}", :resource => @resource.model_name.human)
+- admin_title(page_title)
+- relational_products = @item.relational_products
+- @resource_actions = [["Show", {:action=>"show"}]]
+- content_for :main_grid do
+  h2
+    = page_title
+    small
+      = list_actions
+  = admin_display_flash_message
+  = render 'show'
+  dl
+    - build_display(@item, fields).each do |attribute, type|
+      dt
+        = attribute
+      dd
+        = type
+  - if @item.category == "textbook_set" && relational_products.present?
+    h3 セット内容
+    p セットに問題集を追加する
+    = build_list(@resource, fields, relational_products)
+.grid_2
+  = build_sidebar
+.grid_8
+  = yield :main_grid

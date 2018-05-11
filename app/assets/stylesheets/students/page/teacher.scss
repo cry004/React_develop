@@ -1,0 +1,51 @@
+.page-teacher {
+  .container {
+    margin: 20px;
+    &-main {
+      margin-left: 20px;
+      width: calc(100% - 20px - #{$width-submenu});
+      &-list {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .date {
+    font-size: $font-size-30;
+    color: $color-text-gray;
+  }
+  .teacher {
+    margin-top: 20px;
+    &-image {
+      width: 80px;
+      height: 80px;
+      background-image: image-url('students/profile/teacher.png');
+      background-size: cover;
+    }
+    &-comment {
+      position: relative;
+      padding: 15px;
+      margin-left: 20px;
+      max-width: 330px;
+      min-height: 74px;
+      font-size: $font-size-20;
+      background-color: $color-white;
+      border-radius: 4px;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 33px;
+        left: -7px;
+        border: 7px solid transparent;
+        border-right-color: $color-white;
+        border-left-width: 0;
+        width:0;
+      }
+    }
+  }
+  .cards {
+    margin-left: -15px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items: baseline;
+  }
+}
